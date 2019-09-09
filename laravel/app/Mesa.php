@@ -14,4 +14,9 @@ class Mesa extends Model
         'inscritos',
         'recinto_id',
     ];
+
+    public function recinto()
+    {
+        return $this->belongsTo('App\Recinto');
+    }
 }
