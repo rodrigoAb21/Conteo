@@ -5,10 +5,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="pb-2">Gestionar Roles
+                    <h3 class="pb-2">Elecciones
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('roles/create')}}">
-                                <i class="fa fa-plus"></i> Nuevo
+                            <a class="btn btn-success" href="{{url('elecciones/create')}}">
+                                <i class="fa fa-plus"></i> Nueva
                             </a>
                         </div>
                     </h3>
@@ -18,21 +18,29 @@
                             <tr>
                                 <th>ID</th>
                                 <th>NOMBRE</th>
-                                <th class="text-right">Opciones</th>
+                                <th>FECHA</th>
+                                <th>TIPO</th>
+                                <th>ESTADO</th>
+                                <th>NRO_MESAS</th>
+                                <th class="text-right">OPCIONES</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($roles as $rol)
+                            @foreach($elecciones as $eleccion)
                                 <tr>
-                                    <td>{{$rol -> id}}</td>
-                                    <td>{{$rol -> nombre}}</td>
+                                    <td>{{$eleccion -> id}}</td>
+                                    <td>{{$eleccion -> nombre}}</td>
+                                    <td>{{Carbon\Carbon::parse($eleccion -> fecha)->format('d/M/Y')}}</td>
+                                    <td>{{$eleccion -> tipo}}</td>
+                                    <td>{{$eleccion -> estado}}</td>
+                                    <td>{{$eleccion -> mesas}}</td>
                                     <td class="text-right ">
-                                        <a href="{{url('roles/'.$rol->id.'/edit')}}">
+                                        <a href="{{url('elecciones/'.$eleccion->id.'/edit')}}">
                                             <button class="btn btn-warning">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$rol -> nombre}}', '{{url('roles/'.$rol -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$eleccion -> nombre}}', '{{url('elecciones/'.$eleccion -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>
@@ -40,7 +48,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{$roles->links('pagination.default')}}
+                        {{$elecciones->links('pagination.default')}}
                     </div>
                 </div>
             </div>
@@ -53,8 +61,8 @@
             function modalEliminar(nombre, url) {
                 $('#modalEliminarForm').attr("action", url);
                 $('#metodo').val("delete");
-                $('#modalEliminarTitulo').html("Eliminar Rol");
-                $('#modalEliminarEnunciado').html("Realmente desea eliminar el rol: " + nombre + "?");
+                $('#modalEliminarTitulo').html("Eliminar Eleccion");
+                $('#modalEliminarEnunciado').html("Realmente desea eliminar la eleccion: " + nombre + "?");
                 $('#modalEliminar').modal('show');
             }
 

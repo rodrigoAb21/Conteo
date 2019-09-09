@@ -27,3 +27,14 @@ Route::post('logout', [
 Route::get('/', function () {
     return view('home');
 })->middleware('auth');
+
+Route::middleware('auth')->group(function () {
+    Route::resource('elecciones', 'Web\EleccionController');
+    Route::resource('participantes', 'Web\ParticipanteController');
+    Route::resource('paises', 'Web\PaisController');
+    Route::resource('departamentos', 'Web\DepartamentoController');
+    Route::resource('provincias', 'Web\ProvinciaController');
+    Route::resource('localidades', 'Web\LocalidadController');
+    Route::resource('recintos', 'Web\RecintoController');
+    Route::resource('mesas', 'Web\MesaController');
+});
