@@ -29,10 +29,10 @@ class ParticipanteController extends Controller
 
     public function store(Request $request)
     {
-        $eleccion = new Participante();
-        $eleccion->nombre = $request['nombre'];
-        $eleccion->color = $request['color'];
-        $eleccion->save();
+        $participante = new Participante();
+        $participante->nombre = $request['nombre'];
+        $participante->color = $request['color'];
+        $participante->save();
 
         return redirect('participantes');
     }
@@ -49,10 +49,10 @@ class ParticipanteController extends Controller
 
     public function update(Request $request, $id)
     {
-        $eleccion = Participante::findOrFail($id);
-        $eleccion->nombre = $request['nombre'];
-        $eleccion->color = $request['color'];
-        $eleccion->update();
+        $participante = Participante::findOrFail($id);
+        $participante->nombre = $request['nombre'];
+        $participante->color = $request['color'];
+        $participante->update();
 
         return redirect('participantes');
     }
@@ -60,8 +60,8 @@ class ParticipanteController extends Controller
 
     public function destroy($id)
     {
-        $eleccion = Participante::findOrFail($id);
-        $eleccion->delete();
+        $participante = Participante::findOrFail($id);
+        $participante->delete();
 
         return redirect('participantes');
     }
