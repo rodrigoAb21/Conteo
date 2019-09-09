@@ -14,4 +14,9 @@ class Recinto extends Model
         'direccion',
         'localidad_id',
     ];
+
+    public function localidad()
+    {
+        return $this->belongsTo('App\Localidad');
+    }
 }
