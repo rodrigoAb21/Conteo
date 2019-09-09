@@ -5,10 +5,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="pb-2">Departamentos
+                    <h3 class="pb-2">Provincias
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('departamentos/create')}}">
-                                <i class="fa fa-plus"></i> Nuevo
+                            <a class="btn btn-success" href="{{url('provincias/create')}}">
+                                <i class="fa fa-plus"></i> Nueva
                             </a>
                         </div>
                     </h3>
@@ -18,23 +18,23 @@
                             <tr>
                                 <th>ID</th>
                                 <th>NOMBRE</th>
-                                <th>PAIS</th>
+                                <th>DEPARTAMENTO</th>
                                 <th>OPCIONES</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($departamentos as $departamento)
+                            @foreach($provincias as $provincia)
                                 <tr>
-                                    <td>{{$departamento->id}}</td>
-                                    <td>{{$departamento->nombre}}</td>
-                                    <td>{{$departamento->pais->nombre}}</td>
+                                    <td>{{$provincia->id}}</td>
+                                    <td>{{$provincia->nombre}}</td>
+                                    <td>{{$provincia->departamento->nombre}}</td>
                                     <td class="text-right ">
-                                        <a href="{{url('departamentos/'.$departamento->id.'/edit')}}">
+                                        <a href="{{url('provincias/'.$provincia->id.'/edit')}}">
                                             <button class="btn btn-warning">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$departamento -> nombre}}', '{{url('departamentos/'.$departamento -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$provincia -> nombre}}', '{{url('provincias/'.$provincia -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>
@@ -42,7 +42,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{$departamentos->links('pagination.default')}}
+                        {{$provincias->links('pagination.default')}}
                     </div>
                 </div>
             </div>
@@ -55,8 +55,8 @@
             function modalEliminar(nombre, url) {
                 $('#modalEliminarForm').attr("action", url);
                 $('#metodo').val("delete");
-                $('#modalEliminarTitulo').html("Eliminar Departamento");
-                $('#modalEliminarEnunciado').html("Realmente desea eliminar al departamento: " + nombre + "?");
+                $('#modalEliminarTitulo').html("Eliminar Provincia");
+                $('#modalEliminarEnunciado').html("Realmente desea eliminar la provincia: " + nombre + "?");
                 $('#modalEliminar').modal('show');
             }
 

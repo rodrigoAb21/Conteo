@@ -6,12 +6,11 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Editar pais: {{$pais->id}}
+                        Nuevo provincia
                     </h3>
 
-                    <form method="POST" action="{{url('paises/'.$pais->id)}}" autocomplete="off">
+                    <form method="POST" action="{{url('provincias')}}" autocomplete="off">
                         {{csrf_field()}}
-                        {{method_field('PATCH')}}
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
@@ -19,12 +18,23 @@
                                     <input required
                                            type="text"
                                            class="form-control"
-                                           value="{{$pais->nombre}}"
+                                           value="{{old('nombre')}}"
                                            name="nombre">
                                 </div>
                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Departamento</label>
+                                    <select class="form-control" name="departamento_id">
+                                        @foreach($departamentos as $departamento)
+                                            <option value="{{$departamento->id}}">
+                                                {{$departamento->nombre}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
                 </div>

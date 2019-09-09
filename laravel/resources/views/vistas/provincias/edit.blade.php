@@ -6,10 +6,10 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Editar Participante: {{$participante->id}}
+                        Editar provincia: {{$provincia->id}}
                     </h3>
 
-                    <form method="POST" action="{{url('participantes/'.$participante->id)}}" autocomplete="off">
+                    <form method="POST" action="{{url('provincias/'.$provincia->id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
                         <div class="row">
@@ -19,31 +19,30 @@
                                     <input required
                                            type="text"
                                            class="form-control"
-                                           value="{{$participante->nombre}}"
+                                           value="{{$provincia->nombre}}"
                                            name="nombre">
                                 </div>
                             </div>
-
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Estado</label>
-                                    <select class="form-control" name="color">
-                                        @foreach($colores as $color)
-                                            @if($color->valor == $participante->color)
-                                                <option selected value="{{$color->valor}}">
-                                                    {{$color->nombre}}
+                                    <label>Pais</label>
+                                    <select class="form-control" name="departamento_id">
+                                        @foreach($departamentos as $departamento)
+                                            @if($departamento->id == $provincia->departamento_id)
+                                                <option selected value="{{$departamento->id}}">
+                                                    {{$departamento->nombre}}
                                                 </option>
                                             @else
-                                                <option value="{{$color->valor}}">
-                                                    {{$color->nombre}}
+                                                <option value="{{$departamento->id}}">
+                                                    {{$departamento->nombre}}
                                                 </option>
                                             @endif
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                          
                         </div>
+
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
                 </div>
