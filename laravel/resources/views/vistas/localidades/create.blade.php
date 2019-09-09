@@ -6,10 +6,10 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Nueva provincia
+                        Nueva localidad
                     </h3>
 
-                    <form method="POST" action="{{url('provincias')}}" autocomplete="off">
+                    <form method="POST" action="{{url('localidades')}}" autocomplete="off">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -24,11 +24,11 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Departamento</label>
-                                    <select class="form-control" name="departamento_id">
-                                        @foreach($departamentos as $departamento)
-                                            <option value="{{$departamento->id}}">
-                                                {{$departamento->nombre}}
+                                    <label>Provincia</label>
+                                    <select class="form-control" name="provincia_id">
+                                        @foreach($provincias as $provincia)
+                                            <option value="{{$provincia->id}}">
+                                                {{$provincia->nombre}}
                                             </option>
                                         @endforeach
                                     </select>

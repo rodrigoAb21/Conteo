@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Pais</label>
+                                    <label>Departamento</label>
                                     <select class="form-control" name="departamento_id">
                                         @foreach($departamentos as $departamento)
                                             @if($departamento->id == $provincia->departamento_id)

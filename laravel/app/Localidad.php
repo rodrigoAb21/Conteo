@@ -13,4 +13,9 @@ class Localidad extends Model
         'nombre',
         'provincia_id',
     ];
+
+    public function provincia()
+    {
+        return $this->belongsTo('App\Provincia');
+    }
 }
