@@ -24,7 +24,9 @@ class Color
         $colores[] = new Color('Anaranjado', '#ff8000');
         $colores[] = new Color('Morado', '#ee82ee');
         $colores[] = new Color('Negro', '#000000');
+        $colores[] = new Color('Gris', '#9b9b9b');
         $colores[] = new Color('Blanco', '#ffffff');
+        $colores[] = new Color('Rosa', '#d0ace3');
 
         return $colores;
     }

@@ -253,7 +253,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('participante')->insert([
             'nombre' => 'NFR',
-            'color' => '#21119e',
+            'color' => '#572364',
         ]);
 
         DB::table('participante')->insert([

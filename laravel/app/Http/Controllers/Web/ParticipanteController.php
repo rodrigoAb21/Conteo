@@ -12,17 +12,18 @@ class ParticipanteController extends Controller
     public function index()
     {
         return view('vistas.participantes.index',
-            ['participantes' => Participante::paginate(10)]);
+            [
+                'participantes' => Participante::paginate(10),
+                'colores' => Color::getColores(),
+            ]);
     }
 
     public function create()
     {
-        $colores = Color::getColores();
-
         return view('vistas.participantes.create',
-            [
-                'colores' => $colores,
-            ]);
+        [
+            'colores' => Color::getColores(),
+        ]);
     }
 
 
@@ -38,23 +39,10 @@ class ParticipanteController extends Controller
 
     public function edit($id)
     {
-        $colores = [
-            '#2471A3',
-            '#C0392B',
-            '#9B59B6',
-            '#1ABC9C',
-            '#27AE60',
-            '#F1C40F',
-            '#E67E22',
-            '#ECF0F1',
-            '#AAB7B8',
-            '#17202A',
-        ];
-
         return view('vistas.participantes.edit',
             [
-                'colores' => $colores,
-                'eleccion' => Participante::findOrFail($id),
+                'colores' => Color::getColores(),
+                'participante' => Participante::findOrFail($id),
             ]);
     }
 
