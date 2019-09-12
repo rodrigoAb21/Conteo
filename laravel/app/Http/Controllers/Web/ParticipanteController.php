@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web;
 
 use App\Participante;
-use App\Utils\Color;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,16 +13,12 @@ class ParticipanteController extends Controller
         return view('vistas.participantes.index',
             [
                 'participantes' => Participante::paginate(10),
-                'colores' => Color::getColores(),
             ]);
     }
 
     public function create()
     {
-        return view('vistas.participantes.create',
-        [
-            'colores' => Color::getColores(),
-        ]);
+        return view('vistas.participantes.create');
     }
 
 
@@ -41,7 +36,6 @@ class ParticipanteController extends Controller
     {
         return view('vistas.participantes.edit',
             [
-                'colores' => Color::getColores(),
                 'participante' => Participante::findOrFail($id),
             ]);
     }

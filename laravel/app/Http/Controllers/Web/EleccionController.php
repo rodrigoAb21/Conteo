@@ -97,9 +97,18 @@ class EleccionController extends Controller
     public function mostrarResultados($id){
 
         $eleccion = Eleccion::findOrFail($id);
+        $resultados = DB::select(
+            'SELECT SUM(resultado.total) as total, participante.color, participante.nombre
+             FROM resultado,participante_eleccion, participante  
+             WHERE participante_eleccion.participante_id = participante.id 
+             AND resultado.participante_eleccion_id = participante_eleccion.id
+             AND participante_eleccion.eleccion_id = ?
+             GROUP BY participante.nombre, participante.color', [$id]);
+
         return view('vistas.elecciones.resultados',
             [
                 'eleccion' => $eleccion,
+                'resultados' => $resultados,
             ]);
     }
 

@@ -7,31 +7,7 @@
                 <div class="card-body">
                     <h3 class="pb-2">Resultados: "{{$eleccion->nombre}}"</h3>
                     <div class="row">
-                        <!-- column -->
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Line Chart</h4>
-                                    <div>
-                                        <canvas id="chart1" height="150"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- column -->
-                        <!-- column -->
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Bar Chart</h4>
-                                    <div>
-                                        <canvas id="chart2" height="150"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- column -->
-                        <!-- column -->
+
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-body">
@@ -42,43 +18,18 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- column -->
-                        <!-- column -->
+
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Doughnut Chart</h4>
+                                    <h4 class="card-title">Bar Chart</h4>
                                     <div>
-                                        <canvas id="chart4" height="150"> </canvas>
+                                        <canvas id="chart2" height="150"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- column -->
-                        <!-- column -->
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Polar Area Chart</h4>
-                                    <div>
-                                        <canvas id="chart5" height="150"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- column -->
-                        <!-- column -->
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Radar Chart</h4>
-                                    <div>
-                                        <canvas id="chart6" height="150"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- column -->
+
                     </div>
                     <a href="{{url('elecciones')}}">
                         <button class="btn btn-warning">
@@ -90,6 +41,64 @@
         </div>
     </div>
     @push('scripts')
-        <script src="{{asset('plantilla/assets/plugins/Chart.js/chartjs.init.js')}}"></script>
+        <script>
+            $( document ).ready(function() {
+                var data3 = [];
+                @foreach($resultados as $resultado)
+                    data3.push({
+                        value: parseInt('{{$resultado -> total}}'),
+                        color:'{{$resultado -> color}}',
+                        highlight: '{{$resultado -> color}}',
+                        label: '{{$resultado -> nombre}}',
+                    });
+                @endforeach
+
+                var ctx2 = document.getElementById("chart2").getContext("2d");
+                var data2 = {
+                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    datasets: [
+                        {
+                            label: "My First dataset",
+                            fillColor: "#009efb",
+                            strokeColor: "#009efb",
+                            highlightFill: "#009efb",
+                            highlightStroke: "#009efb",
+                            data: [10]
+                        }
+                    ]
+                };
+
+                var chart2 = new Chart(ctx2).Bar(data2, {
+                    scaleBeginAtZero : true,
+                    scaleShowGridLines : true,
+                    scaleGridLineColor : "rgba(0,0,0,.005)",
+                    scaleGridLineWidth : 0,
+                    scaleShowHorizontalLines: true,
+                    scaleShowVerticalLines: true,
+                    barShowStroke : true,
+                    barStrokeWidth : 0,
+                    tooltipCornerRadius: 2,
+                    barDatasetSpacing : 3,
+                    responsive: true
+                });
+
+
+
+                var ctx3 = document.getElementById("chart3").getContext("2d");
+
+                var myPieChart = new Chart(ctx3).Pie(data3,{
+                    segmentShowStroke : true,
+                    segmentStrokeColor : "#dbdbdb",
+                    segmentStrokeWidth : 1,
+                    animationSteps : 100,
+                    tooltipCornerRadius: 0,
+                    animationEasing : "easeOutBounce",
+                    animateRotate : true,
+                    animateScale : false,
+                    responsive: true
+                });
+
+            });
+        </script>
     @endpush()
 @endsection

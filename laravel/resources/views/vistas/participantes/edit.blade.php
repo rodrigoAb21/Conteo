@@ -27,19 +27,11 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Estado</label>
-                                    <select class="form-control" name="color">
-                                        @foreach($colores as $color)
-                                            @if($color->valor == $participante->color)
-                                                <option selected value="{{$color->valor}}">
-                                                    {{$color->nombre}}
-                                                </option>
-                                            @else
-                                                <option value="{{$color->valor}}">
-                                                    {{$color->nombre}}
-                                                </option>
-                                            @endif
-                                        @endforeach
-                                    </select>
+                                    <input required
+                                           type="color"
+                                           class="form-control"
+                                           value="{{$participante->color}}"
+                                           name="color">
                                 </div>
                             </div>
                           

@@ -25,12 +25,11 @@
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Estado</label>
-                                    <select class="form-control" name="color">
-                                        @foreach($colores as $color)
-                                            <option value="{{$color->valor}}">{{$color->nombre}}</option>
-                                        @endforeach
-                                    </select>
+                                    <label>Color</label>
+                                    <input required
+                                           class="form-control"
+                                           name="color"
+                                           type="color">
                                 </div>
                             </div>
                         </div>
