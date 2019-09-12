@@ -5,13 +5,13 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="pb-2">Resultados: "{{$eleccion->nombre}}"</h3>
+                    <h3 class="pb-2">Resultados Generales: "{{$eleccion->nombre}}"</h3>
                     <div class="row">
 
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Pie Chart</h4>
+                                    <h4 class="card-title">Grafico circular</h4>
                                     <div>
                                         <canvas id="chart3" height="150"></canvas>
                                     </div>
@@ -22,7 +22,7 @@
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Bar Chart</h4>
+                                    <h4 class="card-title">Grafico de barras</h4>
                                     <div>
                                         <canvas id="chart2" height="150"></canvas>
                                     </div>
@@ -30,6 +30,29 @@
                             </div>
                         </div>
 
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered color-table info-table">
+                            <thead>
+                            <tr>
+                                <th class="text-center">POSICION</th>
+                                <th class="text-center">NOMBRE</th>
+                                <th class="text-center">COLOR</th>
+                                <th class="text-center">TOTAL</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($resultados as $resultado)
+                                <tr>
+
+                                    <td class="text-center">{{$loop -> iteration}}</td>
+                                    <td class="text-center">{{$resultado -> nombre}}</td>
+                                    <td style="background: {{$resultado -> color}};"></td>
+                                    <td class="text-center">{{$resultado -> total}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                     <a href="{{url('elecciones')}}">
                         <button class="btn btn-warning">

@@ -103,7 +103,9 @@ class EleccionController extends Controller
              WHERE participante_eleccion.participante_id = participante.id 
              AND resultado.participante_eleccion_id = participante_eleccion.id
              AND participante_eleccion.eleccion_id = ?
-             GROUP BY participante.nombre, participante.color', [$id]);
+             GROUP BY participante.nombre, participante.color
+             ORDER BY total DESC', [$id])
+        ;
 
         return view('vistas.elecciones.resultados',
             [
