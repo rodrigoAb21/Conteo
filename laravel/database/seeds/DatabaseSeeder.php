@@ -253,27 +253,27 @@ class DatabaseSeeder extends Seeder
 
         DB::table('participante')->insert([
             'nombre' => 'NFR',
-            'color' => '#572364',
+            'color' => '#9a3ab2',
         ]);
 
         DB::table('participante')->insert([
             'nombre' => 'MNR',
-            'color' => '#d0ace3',
+            'color' => '#ff97d6',
         ]);
 
         DB::table('participante')->insert([
             'nombre' => 'MAS',
-            'color' => '#112e9e',
+            'color' => '#0d38db',
         ]);
 
         DB::table('participante')->insert([
             'nombre' => 'MIR',
-            'color' => '#e3571b',
+            'color' => '#ff6a2a',
         ]);
 
         DB::table('participante')->insert([
             'nombre' => 'PRI',
-            'color' => '#065c2a',
+            'color' => '#00933e',
         ]);
 
         //Poblando Elecciones

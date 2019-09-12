@@ -44,6 +44,9 @@
         <script>
             $( document ).ready(function() {
                 var data3 = [];
+                var labels = [];
+                var data = [];
+
                 @foreach($resultados as $resultado)
                     data3.push({
                         value: parseInt('{{$resultado -> total}}'),
@@ -51,19 +54,21 @@
                         highlight: '{{$resultado -> color}}',
                         label: '{{$resultado -> nombre}}',
                     });
+                    labels.push('{{$resultado -> nombre}}');
+                    data.push(parseInt('{{$resultado -> total}}'));
                 @endforeach
 
                 var ctx2 = document.getElementById("chart2").getContext("2d");
                 var data2 = {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    labels: labels,
                     datasets: [
                         {
-                            label: "My First dataset",
-                            fillColor: "#009efb",
-                            strokeColor: "#009efb",
-                            highlightFill: "#009efb",
-                            highlightStroke: "#009efb",
-                            data: [10]
+                            label: "Resultados",
+                            fillColor: "#ffffff",
+                            strokeColor: "#d1d1d1",
+                            highlightFill: "#d1d1d1",
+                            highlightStroke: "#d1d1d1",
+                            data: data
                         }
                     ]
                 };
@@ -79,8 +84,10 @@
                     barStrokeWidth : 0,
                     tooltipCornerRadius: 2,
                     barDatasetSpacing : 3,
-                    responsive: true
+                    responsive: true,
                 });
+
+                chart2.generateLegend();
 
 
 
