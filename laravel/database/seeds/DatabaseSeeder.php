@@ -295,6 +295,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Poblando Participante_Eleccion
+
         DB::table('participante_eleccion')->insert([
             'participante_id' => 1,
             'eleccion_id' => 1,
@@ -344,6 +345,46 @@ class DatabaseSeeder extends Seeder
             'participante_id' => 7,
             'eleccion_id' => 2,
         ]);
+
+        // Poblando Resultados
+
+        for ($i = 1; $i <= 35; $i++) {
+            DB::table('resultado')->insert([
+                'total' => rand(0,20),
+                'mesa_id' => $i,
+                'participante_eleccion_id' => 1,
+            ]);
+
+            DB::table('resultado')->insert([
+                'total' => rand(0,20),
+                'mesa_id' => $i,
+                'participante_eleccion_id' => 2,
+            ]);
+
+            DB::table('resultado')->insert([
+                'total' => rand(0,20),
+                'mesa_id' => $i,
+                'participante_eleccion_id' => 3,
+            ]);
+
+            DB::table('resultado')->insert([
+                'total' => rand(0,20),
+                'mesa_id' => $i,
+                'participante_eleccion_id' => 4,
+            ]);
+
+            DB::table('resultado')->insert([
+                'total' => rand(0,20),
+                'mesa_id' => $i,
+                'participante_eleccion_id' => 5,
+            ]);
+        }
+
+
+
+
+
+
 
     }
 }
