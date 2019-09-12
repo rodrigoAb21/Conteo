@@ -35,6 +35,16 @@
                                     <td>{{$eleccion -> estado}}</td>
                                     <td>{{$eleccion -> mesas}}</td>
                                     <td class="text-right ">
+                                        <a href="{{url('elecciones/asignaciones/'.$eleccion->id.'/')}}">
+                                            <button class="btn btn-success">
+                                                <i class="fa fa-angle-double-right"></i>
+                                            </button>
+                                        </a>
+                                        <a href="{{url('elecciones/resultados/'.$eleccion->id.'/')}}">
+                                            <button class="btn btn-info">
+                                                <i class="fa fa-chart-pie"></i>
+                                            </button>
+                                        </a>
                                         <a href="{{url('elecciones/'.$eleccion->id.'/edit')}}">
                                             <button class="btn btn-warning">
                                                 <i class="fa fa-pen"></i>

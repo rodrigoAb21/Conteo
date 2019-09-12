@@ -212,6 +212,9 @@
     <!--Custom JavaScript -->
     <script src="{{asset('plantilla/material/js/custom.js')}}"></script>
     <!-- ============================================================== -->
+    <!-- Chart JS -->
+
+    <script src="{{asset('plantilla/assets/plugins/Chart.js/Chart.min.js')}}"></script>
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="{{asset('plantilla/assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>

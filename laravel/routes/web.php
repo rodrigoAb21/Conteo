@@ -30,6 +30,11 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('elecciones', 'Web\EleccionController');
+    Route::get('elecciones/resultados/{id}', 'Web\EleccionController@mostrarResultados');
+    Route::get('elecciones/asignaciones/{id_eleccion}/{id_p_e}/quitar', 'Web\EleccionController@quitar');
+    Route::get('elecciones/asignaciones/{id}', 'Web\EleccionController@verAsignacion');
+    Route::post('elecciones/asignaciones/{id}', 'Web\EleccionController@asignar');
+
     Route::resource('participantes', 'Web\ParticipanteController');
     Route::resource('paises', 'Web\PaisController');
     Route::resource('departamentos', 'Web\DepartamentoController');
