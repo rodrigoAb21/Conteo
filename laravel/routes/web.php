@@ -43,3 +43,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('recintos', 'Web\RecintoController');
     Route::resource('mesas', 'Web\MesaController');
 });
+
+Route::get('resultados', 'Web\WebController@getEleccionesActivas');
+Route::get('resultados/{id}', 'Web\WebController@mostrarResultados');
