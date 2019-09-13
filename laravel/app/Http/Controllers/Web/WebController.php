@@ -11,7 +11,7 @@ class WebController extends Controller
 {
     public function getEleccionesActivas(){
         $elecciones = Eleccion::
-        where('estado', '=', 'En Proceso')
+        where('estado', '!=', 'En espera')
             ->get();
         return view('vistas.web.elecciones',
             [

@@ -25,7 +25,7 @@ class EleccionController extends Controller
             'Municipal',
             ];
         $estados = [
-            'Es espera',
+            'En espera',
             'En proceso',
             'Finalizada',
         ];
@@ -59,7 +59,7 @@ class EleccionController extends Controller
             ];
 
         $estados = [
-            'Es espera',
+            'En espera',
             'En proceso',
             'Finalizada',
         ];
