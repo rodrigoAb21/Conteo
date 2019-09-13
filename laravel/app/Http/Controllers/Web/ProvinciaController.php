@@ -33,7 +33,7 @@ class ProvinciaController extends Controller
         $provincia->departamento_id = $request['departamento_id'];
         $provincia->save();
 
-        return redirect('provincias');
+        return redirect('admin/provincias');
     }
 
     public function edit($id)
@@ -53,7 +53,7 @@ class ProvinciaController extends Controller
         $provincia->departamento_id = $request['departamento_id'];
         $provincia->update();
 
-        return redirect('provincias');
+        return redirect('admin/provincias');
     }
 
 
@@ -62,6 +62,6 @@ class ProvinciaController extends Controller
         $provincia = Provincia::findOrFail($id);
         $provincia->delete();
 
-        return redirect('provincias');
+        return redirect('admin/provincias');
     }
 }

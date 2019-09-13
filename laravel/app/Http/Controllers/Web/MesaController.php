@@ -34,7 +34,7 @@ class MesaController extends Controller
         $mesa->recinto_id = $request['recinto_id'];
         $mesa->save();
 
-        return redirect('mesas');
+        return redirect('admin/mesas');
     }
 
     public function edit($id)
@@ -55,7 +55,7 @@ class MesaController extends Controller
         $mesa->recinto_id = $request['recinto_id'];
         $mesa->update();
 
-        return redirect('mesas');
+        return redirect('admin/mesas');
     }
 
 
@@ -64,6 +64,6 @@ class MesaController extends Controller
         $mesa = Mesa::findOrFail($id);
         $mesa->delete();
 
-        return redirect('mesas');
+        return redirect('admin/mesas');
     }
 }

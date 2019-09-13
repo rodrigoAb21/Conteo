@@ -9,7 +9,7 @@
                         Editar provincia: {{$provincia->id}}
                     </h3>
 
-                    <form method="POST" action="{{url('provincias/'.$provincia->id)}}" autocomplete="off">
+                    <form method="POST" action="{{url('admin/provincias/'.$provincia->id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
                         <div class="row">

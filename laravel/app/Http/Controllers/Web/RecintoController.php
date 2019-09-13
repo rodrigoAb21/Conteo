@@ -34,7 +34,7 @@ class RecintoController extends Controller
         $recinto->localidad_id = $request['localidad_id'];
         $recinto->save();
 
-        return redirect('recintos');
+        return redirect('admin/recintos');
     }
 
     public function edit($id)
@@ -55,7 +55,7 @@ class RecintoController extends Controller
         $recinto->localidad_id = $request['localidad_id'];
         $recinto->update();
 
-        return redirect('recintos');
+        return redirect('admin/recintos');
     }
 
 
@@ -64,6 +64,6 @@ class RecintoController extends Controller
         $recinto = Recinto::findOrFail($id);
         $recinto->delete();
 
-        return redirect('recintos');
+        return redirect('admin/recintos');
     }
 }

@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h3 class="pb-2">Mesas
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('mesas/create')}}">
+                            <a class="btn btn-success" href="{{url('admin/mesas/create')}}">
                                 <i class="fa fa-plus"></i> Nueva
                             </a>
                         </div>
@@ -31,12 +31,12 @@
                                     <td>{{$mesa->inscritos}}</td>
                                     <td>{{$mesa->recinto->nombre}}</td>
                                     <td class="text-right ">
-                                        <a href="{{url('mesas/'.$mesa->id.'/edit')}}">
+                                        <a href="{{url('admin/mesas/'.$mesa->id.'/edit')}}">
                                             <button class="btn btn-warning">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$mesa -> nombre}}', '{{url('mesas/'.$mesa -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$mesa -> nombre}}', '{{url('admin/mesas/'.$mesa -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

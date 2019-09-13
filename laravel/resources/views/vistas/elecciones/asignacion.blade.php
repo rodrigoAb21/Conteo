@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h3 class="pb-2">Assignaciones: "{{$eleccion->nombre}}"</h3>
 
-                    <form method="POST" action="{{url("elecciones/asignaciones/$eleccion->id")}}" autocomplete="off">
+                    <form method="POST" action="{{url("admin/elecciones/asignaciones/$eleccion->id")}}" autocomplete="off">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -47,7 +47,7 @@
                                     <td>{{$participante -> nombre}}</td>
                                     <td style="background: {{$participante -> color}};"></td>
                                     <td class="text-right ">
-                                        <a href="{{url("elecciones/asignaciones/$eleccion->id/$participante->id/quitar")}}">
+                                        <a href="{{url("admin/elecciones/asignaciones/$eleccion->id/$participante->id/quitar")}}">
                                             <button class="btn btn-danger">
                                                 <i class="fa fa-times"></i>
                                             </button>
@@ -58,7 +58,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{url('elecciones')}}">
+                    <a href="{{url('admin/elecciones')}}">
                         <button class="btn btn-warning">
                             <i class="fa fa-arrow-left"></i> Atras
                         </button>

@@ -9,7 +9,7 @@
                         Editar Empleado: {{$eleccion->id}}
                     </h3>
 
-                    <form method="POST" action="{{url('elecciones/'.$eleccion->id)}}" autocomplete="off">
+                    <form method="POST" action="{{url('admin/elecciones/'.$eleccion->id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
                         <div class="row">

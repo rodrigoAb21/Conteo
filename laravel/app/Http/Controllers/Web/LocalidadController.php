@@ -33,7 +33,7 @@ class LocalidadController extends Controller
         $localidad->provincia_id = $request['provincia_id'];
         $localidad->save();
 
-        return redirect('localidades');
+        return redirect('admin/localidades');
     }
 
     public function edit($id)
@@ -53,7 +53,7 @@ class LocalidadController extends Controller
         $localidad->provincia_id = $request['provincia_id'];
         $localidad->update();
 
-        return redirect('localidades');
+        return redirect('admin/localidades');
     }
 
 
@@ -62,6 +62,6 @@ class LocalidadController extends Controller
         $localidad = Localidad::findOrFail($id);
         $localidad->delete();
 
-        return redirect('localidades');
+        return redirect('admin/localidades');
     }
 }

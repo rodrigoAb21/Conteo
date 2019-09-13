@@ -9,7 +9,7 @@
                         Editar mesa: {{$mesa->id}}
                     </h3>
 
-                    <form method="POST" action="{{url('mesas/'.$mesa->id)}}" autocomplete="off">
+                    <form method="POST" action="{{url('admin/mesas/'.$mesa->id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
                         <div class="row">

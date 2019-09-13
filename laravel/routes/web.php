@@ -24,25 +24,25 @@ Route::post('logout', [
     'uses' => 'Auth\LoginController@logout'
 ]);
 
-Route::get('/', function () {
+Route::get('admin', function () {
     return view('home');
 })->middleware('auth');
 
 Route::middleware('auth')->group(function () {
-    Route::resource('elecciones', 'Web\EleccionController');
-    Route::get('elecciones/resultados/{id}', 'Web\EleccionController@mostrarResultados');
-    Route::get('elecciones/asignaciones/{id_eleccion}/{id_p_e}/quitar', 'Web\EleccionController@quitar');
-    Route::get('elecciones/asignaciones/{id}', 'Web\EleccionController@verAsignacion');
-    Route::post('elecciones/asignaciones/{id}', 'Web\EleccionController@asignar');
+    Route::resource('admin/elecciones', 'Web\EleccionController');
+    Route::get('admin/elecciones/resultados/{id}', 'Web\EleccionController@mostrarResultados');
+    Route::get('admin/elecciones/asignaciones/{id_eleccion}/{id_p_e}/quitar', 'Web\EleccionController@quitar');
+    Route::get('admin/elecciones/asignaciones/{id}', 'Web\EleccionController@verAsignacion');
+    Route::post('admin/elecciones/asignaciones/{id}', 'Web\EleccionController@asignar');
 
-    Route::resource('participantes', 'Web\ParticipanteController');
-    Route::resource('paises', 'Web\PaisController');
-    Route::resource('departamentos', 'Web\DepartamentoController');
-    Route::resource('provincias', 'Web\ProvinciaController');
-    Route::resource('localidades', 'Web\LocalidadController');
-    Route::resource('recintos', 'Web\RecintoController');
-    Route::resource('mesas', 'Web\MesaController');
+    Route::resource('admin/participantes', 'Web\ParticipanteController');
+    Route::resource('admin/paises', 'Web\PaisController');
+    Route::resource('admin/departamentos', 'Web\DepartamentoController');
+    Route::resource('admin/provincias', 'Web\ProvinciaController');
+    Route::resource('admin/localidades', 'Web\LocalidadController');
+    Route::resource('admin/recintos', 'Web\RecintoController');
+    Route::resource('admin/mesas', 'Web\MesaController');
 });
 
-Route::get('resultados', 'Web\WebController@getEleccionesActivas');
+Route::get('/', 'Web\WebController@getEleccionesActivas');
 Route::get('resultados/{id}', 'Web\WebController@mostrarResultados');

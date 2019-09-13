@@ -54,7 +54,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="{{url('elecciones')}}">
+                    <a href="{{url('admin/elecciones')}}">
                         <button class="btn btn-warning">
                             <i class="fa fa-arrow-left"></i> Atras
                         </button>

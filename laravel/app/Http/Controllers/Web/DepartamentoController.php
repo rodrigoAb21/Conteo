@@ -33,7 +33,7 @@ class DepartamentoController extends Controller
         $departamento->pais_id = $request['pais_id'];
         $departamento->save();
 
-        return redirect('departamentos');
+        return redirect('admin/departamentos');
     }
 
     public function edit($id)
@@ -53,7 +53,7 @@ class DepartamentoController extends Controller
         $departamento->pais_id = $request['pais_id'];
         $departamento->update();
 
-        return redirect('departamentos');
+        return redirect('admin/departamentos');
     }
 
 
@@ -62,6 +62,6 @@ class DepartamentoController extends Controller
         $departamento = Departamento::findOrFail($id);
         $departamento->delete();
 
-        return redirect('departamentos');
+        return redirect('admin/departamentos');
     }
 }

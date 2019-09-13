@@ -9,7 +9,7 @@
                         Editar departamento: {{$departamento->id}}
                     </h3>
 
-                    <form method="POST" action="{{url('departamentos/'.$departamento->id)}}" autocomplete="off">
+                    <form method="POST" action="{{url('admin/departamentos/'.$departamento->id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
                         <div class="row">

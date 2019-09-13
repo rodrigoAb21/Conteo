@@ -9,7 +9,7 @@
                         Editar pais: {{$pais->id}}
                     </h3>
 
-                    <form method="POST" action="{{url('paises/'.$pais->id)}}" autocomplete="off">
+                    <form method="POST" action="{{url('admin/paises/'.$pais->id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
                         <div class="row">

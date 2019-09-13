@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h3 class="pb-2">Elecciones
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('elecciones/create')}}">
+                            <a class="btn btn-success" href="{{url('admin/elecciones/create')}}">
                                 <i class="fa fa-plus"></i> Nueva
                             </a>
                         </div>
@@ -35,22 +35,22 @@
                                     <td>{{$eleccion -> estado}}</td>
                                     <td>{{$eleccion -> mesas}}</td>
                                     <td class="text-right ">
-                                        <a href="{{url('elecciones/asignaciones/'.$eleccion->id.'/')}}">
+                                        <a href="{{url('admin/elecciones/asignaciones/'.$eleccion->id.'/')}}">
                                             <button class="btn btn-success">
                                                 <i class="fa fa-angle-double-right"></i>
                                             </button>
                                         </a>
-                                        <a href="{{url('elecciones/resultados/'.$eleccion->id.'/')}}">
+                                        <a href="{{url('admin/elecciones/resultados/'.$eleccion->id.'/')}}">
                                             <button class="btn btn-info">
                                                 <i class="fa fa-chart-pie"></i>
                                             </button>
                                         </a>
-                                        <a href="{{url('elecciones/'.$eleccion->id.'/edit')}}">
+                                        <a href="{{url('admin/elecciones/'.$eleccion->id.'/edit')}}">
                                             <button class="btn btn-warning">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$eleccion -> nombre}}', '{{url('elecciones/'.$eleccion -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$eleccion -> nombre}}', '{{url('admin/elecciones/'.$eleccion -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

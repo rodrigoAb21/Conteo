@@ -9,7 +9,7 @@
                         Editar Participante: {{$participante->id}}
                     </h3>
 
-                    <form method="POST" action="{{url('participantes/'.$participante->id)}}" autocomplete="off">
+                    <form method="POST" action="{{url('admin/participantes/'.$participante->id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
                         <div class="row">

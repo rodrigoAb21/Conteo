@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h3 class="pb-2">Recintos
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('recintos/create')}}">
+                            <a class="btn btn-success" href="{{url('admin/recintos/create')}}">
                                 <i class="fa fa-plus"></i> Nuevo
                             </a>
                         </div>
@@ -31,12 +31,12 @@
                                     <td>{{$recinto->direccion}}</td>
                                     <td>{{$recinto->localidad->nombre}}</td>
                                     <td class="text-right ">
-                                        <a href="{{url('recintos/'.$recinto->id.'/edit')}}">
+                                        <a href="{{url('admin/recintos/'.$recinto->id.'/edit')}}">
                                             <button class="btn btn-warning">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$recinto -> nombre}}', '{{url('recintos/'.$recinto -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$recinto -> nombre}}', '{{url('admin/recintos/'.$recinto -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

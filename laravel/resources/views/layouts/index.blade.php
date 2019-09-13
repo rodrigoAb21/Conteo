@@ -39,7 +39,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand ligh" href="{{url('/')}}">
+                    <a class="navbar-brand ligh" href="{{url('admin')}}">
                         <!-- Logo icon -->
                         <b class="light-logo">
                             <i class="fa fa-person-booth"></i>
@@ -107,50 +107,50 @@
 
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="{{ Request::is('elecciones*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('elecciones')}}" >
+                        <li class="{{ Request::is('admin/elecciones*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('admin/elecciones')}}" >
                                 <i class="fa fa-vote-yea"></i>
                                 <span class="hide-menu"> Elecciones</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('participantes*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('participantes')}}" >
+                        <li class="{{ Request::is('admin/participantes*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('admin/participantes')}}" >
                                 <i class="fa fa-users"></i>
                                 <span class="hide-menu"> Participantes</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('paises*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('paises')}}" >
+                        <li class="{{ Request::is('admin/paises*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('admin/paises')}}" >
                                 <i class="fa fa-globe-americas"></i>
                                 <span class="hide-menu"> Paises</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('departamentos*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('departamentos')}}" >
+                        <li class="{{ Request::is('admin/departamentos*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('admin/departamentos')}}" >
                                 <i class="fa fa-flag"></i>
                                 <span class="hide-menu"> Departamentos</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('provincias*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('provincias')}}" >
+                        <li class="{{ Request::is('admin/provincias*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('admin/provincias')}}" >
                                 <i class="fa fa-route"></i>
                                 <span class="hide-menu"> Provincias</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('localidades*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('localidades')}}" >
+                        <li class="{{ Request::is('admin/localidades*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('admin/localidades')}}" >
                                 <i class="fa fa-map-signs"></i>
                                 <span class="hide-menu"> Localidades</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('recintos*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('recintos')}}" >
+                        <li class="{{ Request::is('admin/recintos*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('admin/recintos')}}" >
                                 <i class="fa fa-school"></i>
                                 <span class="hide-menu"> Recintos</span>
                             </a>
                         </li>
-                        <li class="{{ Request::is('mesas*') ? 'nav-item active' : 'nav-item' }}">
-                            <a href="{{url('mesas')}}" >
+                        <li class="{{ Request::is('admin/mesas*') ? 'nav-item active' : 'nav-item' }}">
+                            <a href="{{url('admin/mesas')}}" >
                                 <i class="fa fa-archive"></i>
                                 <span class="hide-menu"> Mesas</span>
                             </a>

@@ -28,7 +28,7 @@ class PaisController extends Controller
         $eleccion->nombre = $request['nombre'];
         $eleccion->save();
 
-        return redirect('paises');
+        return redirect('admin/paises');
     }
 
     public function edit($id)
@@ -46,7 +46,7 @@ class PaisController extends Controller
         $eleccion->nombre = $request['nombre'];
         $eleccion->update();
 
-        return redirect('paises');
+        return redirect('admin/paises');
     }
 
 
@@ -55,6 +55,6 @@ class PaisController extends Controller
         $eleccion = Pais::findOrFail($id);
         $eleccion->delete();
 
-        return redirect('paises');
+        return redirect('admin/paises');
     }
 }

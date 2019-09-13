@@ -9,7 +9,7 @@
                         Nueva mesa
                     </h3>
 
-                    <form method="POST" action="{{url('mesas')}}" autocomplete="off">
+                    <form method="POST" action="{{url('admin/mesas')}}" autocomplete="off">
                         {{csrf_field()}}
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">

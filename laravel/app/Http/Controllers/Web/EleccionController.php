@@ -47,7 +47,7 @@ class EleccionController extends Controller
         $eleccion->tipo = $request['tipo'];
         $eleccion->save();
 
-        return redirect('elecciones');
+        return redirect('admin/elecciones');
     }
 
     public function edit($id)
@@ -82,7 +82,7 @@ class EleccionController extends Controller
         $eleccion->tipo = $request['tipo'];
         $eleccion->update();
 
-        return redirect('elecciones');
+        return redirect('admin/elecciones');
     }
 
 
@@ -91,7 +91,7 @@ class EleccionController extends Controller
         $eleccion = Eleccion::findOrFail($id);
         $eleccion->delete();
 
-        return redirect('elecciones');
+        return redirect('admin/elecciones');
     }
 
     public function mostrarResultados($id){
@@ -145,7 +145,7 @@ class EleccionController extends Controller
         $participante->participante_id = $request['participante_id'];
         $participante->save();
 
-        return redirect('elecciones/asignaciones/' . $id);
+        return redirect('admin/elecciones/asignaciones/' . $id);
     }
 
     public function quitar($id_eleccion, $id_p_e)
@@ -153,6 +153,6 @@ class EleccionController extends Controller
         $participante = ParticipanteEleccion::findOrFail($id_p_e);
         $participante->delete();
 
-        return redirect('elecciones/asignaciones/' . $id_eleccion);
+        return redirect('admin/elecciones/asignaciones/' . $id_eleccion);
     }
 }

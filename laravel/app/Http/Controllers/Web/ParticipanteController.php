@@ -29,7 +29,7 @@ class ParticipanteController extends Controller
         $participante->color = $request['color'];
         $participante->save();
 
-        return redirect('participantes');
+        return redirect('admin/participantes');
     }
 
     public function edit($id)
@@ -48,7 +48,7 @@ class ParticipanteController extends Controller
         $participante->color = $request['color'];
         $participante->update();
 
-        return redirect('participantes');
+        return redirect('admin/participantes');
     }
 
 
@@ -57,6 +57,6 @@ class ParticipanteController extends Controller
         $participante = Participante::findOrFail($id);
         $participante->delete();
 
-        return redirect('participantes');
+        return redirect('admin/participantes');
     }
 }

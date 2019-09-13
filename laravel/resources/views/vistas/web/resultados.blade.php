@@ -56,7 +56,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <a href="{{url('resultados')}}">
+                        <a href="{{url('/')}}">
                             <button class="btn btn-danger">
                                 <i class="fa fa-arrow-left"></i> Atras
                             </button>

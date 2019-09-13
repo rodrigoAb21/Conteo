@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h3 class="pb-2">Localidades
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('localidades/create')}}">
+                            <a class="btn btn-success" href="{{url('admin/localidades/create')}}">
                                 <i class="fa fa-plus"></i> Nueva
                             </a>
                         </div>
@@ -29,12 +29,12 @@
                                     <td>{{$localidad->nombre}}</td>
                                     <td>{{$localidad->provincia->nombre}}</td>
                                     <td class="text-right ">
-                                        <a href="{{url('localidades/'.$localidad->id.'/edit')}}">
+                                        <a href="{{url('admin/localidades/'.$localidad->id.'/edit')}}">
                                             <button class="btn btn-warning">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$localidad -> nombre}}', '{{url('localidades/'.$localidad -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$localidad -> nombre}}', '{{url('admin/localidades/'.$localidad -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

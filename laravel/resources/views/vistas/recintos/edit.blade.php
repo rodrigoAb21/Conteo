@@ -9,7 +9,7 @@
                         Editar recinto: {{$recinto->id}}
                     </h3>
 
-                    <form method="POST" action="{{url('recintos/'.$recinto->id)}}" autocomplete="off">
+                    <form method="POST" action="{{url('admin/recintos/'.$recinto->id)}}" autocomplete="off">
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
                         <div class="row">

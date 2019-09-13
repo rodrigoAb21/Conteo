@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h3 class="pb-2">Participantes
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('participantes/create')}}">
+                            <a class="btn btn-success" href="{{url('admin/participantes/create')}}">
                                 <i class="fa fa-plus"></i> Nuevo
                             </a>
                         </div>
@@ -29,12 +29,12 @@
                                     <td>{{$participante -> nombre}}</td>
                                     <td style="background: {{$participante -> color}};"></td>
                                     <td class="text-right ">
-                                        <a href="{{url('participantes/'.$participante->id.'/edit')}}">
+                                        <a href="{{url('admin/participantes/'.$participante->id.'/edit')}}">
                                             <button class="btn btn-warning">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$participante -> nombre}}', '{{url('participantes/'.$participante -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$participante -> nombre}}', '{{url('admin/participantes/'.$participante -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>
