@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:qr_code_scanner/qr_scanner_overlay_shape.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class QrPage extends StatefulWidget {
   static final String routeName = 'qr_page';
@@ -10,52 +9,49 @@ class QrPage extends StatefulWidget {
 }
 
 class _QrPageState extends State<QrPage> {
-  GlobalKey qrKey = GlobalKey();
-  var qrText = "";
-  QRViewController controller;
+String _counter,_value = "";
+
+  Future _incrementCounter() async{
+
+    _counter= await FlutterBarcodeScanner.scanBarcode("#004297", "Cancel", true);
+
+    setState(() {
+      _value=_counter;
+    });
+
+
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("QR SCAN"),
+
+        title: Text("QR"),
       ),
       body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
         child: Column(
+
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Expanded(
-              flex: 5,
-              child: QRView(key: qrKey,overlay: QrScannerOverlayShape(
-                borderRadius: 10,
-                borderColor: Colors.red,
-                borderWidth: 10,
-                borderLength: 30,
-                cutOutSize: 300,
-              ), onQRViewCreated: _onQRViewCreate),
+            Text(
+              'Valor del Scan:',
             ),
-            Expanded(
-              flex: 1,
-              child: Text('Scan Result: $qrText'),
-            )
+            Text(
+              _value,
+              style: Theme.of(context).textTheme.display1,
+            ),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.settings_overscan),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
-  }
-
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
-  }
-
-  void _onQRViewCreate(QRViewController controller) {
-    this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        qrText = scanData;
-      });
-
-    });
   }
 }
