@@ -24,7 +24,18 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>Sigla</label>
+                                    <input required
+                                           type="text"
+                                           class="form-control"
+                                           value="{{$participante->sigla}}"
+                                           name="sigla">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Estado</label>
                                     <input required

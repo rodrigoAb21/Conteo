@@ -47,10 +47,10 @@
                                 @foreach($resultados as $resultado)
                                     <tr>
 
-                                        <td class="text-center">{{$loop -> iteration}}</td>
-                                        <td class="text-center">{{$resultado -> nombre}}</td>
-                                        <td style="background: {{$resultado -> color}};"></td>
-                                        <td class="text-center">{{$resultado -> total}}</td>
+                                        <td class="text-center">{{$loop->iteration}}</td>
+                                        <td class="text-center">{{$resultado->sigla}}</td>
+                                        <td style="background: {{$resultado->color}};"></td>
+                                        <td class="text-center">{{$resultado->total}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -75,13 +75,13 @@
 
                 @foreach($resultados as $resultado)
                 data3.push({
-                    value: parseInt('{{$resultado -> total}}'),
-                    color:'{{$resultado -> color}}',
-                    highlight: '{{$resultado -> color}}',
-                    label: '{{$resultado -> nombre}}',
+                    value: parseInt('{{$resultado->total}}'),
+                    color:'{{$resultado->color}}',
+                    highlight: '{{$resultado->color}}',
+                    label: '{{$resultado->sigla}}',
                 });
-                labels.push('{{$resultado -> nombre}}');
-                data.push(parseInt('{{$resultado -> total}}'));
+                labels.push('{{$resultado->sigla}}');
+                data.push(parseInt('{{$resultado->total}}'));
                         @endforeach
 
                 var ctx2 = document.getElementById("chart2").getContext("2d");

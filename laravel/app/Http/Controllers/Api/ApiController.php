@@ -30,7 +30,7 @@ class ApiController extends Controller
             foreach ($resultados as $resultado) {
                 $resultado2 = new Resultado();
                 $resultado2->mesa_id = $mesa_id;
-                $resultado2->participante_eleccion_id = $this->getParticipante($eleccion_id, $resultado['nombre']);
+                $resultado2->participante_eleccion_id = $this->getParticipante($eleccion_id, $resultado['sigla']);
                 $resultado2->total = $resultado['total'];
                 $resultado2->save();
             }
@@ -45,11 +45,11 @@ class ApiController extends Controller
 
     }
 
-    public function getParticipante($eleccion_id, $nombre)
+    public function getParticipante($eleccion_id, $sigla)
     {
         $id = -1;
         $participante_id = Participante::select('id')
-            ->where('nombre', '=' , $nombre)
+            ->where('sigla', '=' , $sigla)
             ->first();
 
         if ($participante_id != null) {

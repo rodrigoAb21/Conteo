@@ -30,7 +30,7 @@ Route::get('admin', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('admin/elecciones', 'Web\EleccionController');
-    Route::get('admin/elecciones/resultados/{id}', 'Web\EleccionController@mostrarResultados');
+    Route::get('admin/elecciones/resultados/{id}', 'Web\EleccionController@resultados_generales');
     Route::get('admin/elecciones/asignaciones/{id_eleccion}/{id_p_e}/quitar', 'Web\EleccionController@quitar');
     Route::get('admin/elecciones/asignaciones/{id}', 'Web\EleccionController@verAsignacion');
     Route::post('admin/elecciones/asignaciones/{id}', 'Web\EleccionController@asignar');
@@ -45,4 +45,4 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', 'Web\WebController@getEleccionesActivas');
-Route::get('resultados/{id}', 'Web\WebController@mostrarResultados');
+Route::get('resultados/{id}', 'Web\WebController@resultados_generales');

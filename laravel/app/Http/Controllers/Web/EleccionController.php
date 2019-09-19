@@ -94,16 +94,16 @@ class EleccionController extends Controller
         return redirect('admin/elecciones');
     }
 
-    public function mostrarResultados($id){
+    public function resultados_generales($id){
 
         $eleccion = Eleccion::findOrFail($id);
         $resultados = DB::select(
-            'SELECT SUM(resultado.total) as total, participante.color, participante.nombre
+            'SELECT SUM(resultado.total) as total, participante.color, participante.sigla
              FROM resultado,participante_eleccion, participante  
              WHERE participante_eleccion.participante_id = participante.id 
              AND resultado.participante_eleccion_id = participante_eleccion.id
              AND participante_eleccion.eleccion_id = ?
-             GROUP BY participante.nombre, participante.color
+             GROUP BY participante.sigla, participante.color
              ORDER BY total DESC', [$id])
         ;
 

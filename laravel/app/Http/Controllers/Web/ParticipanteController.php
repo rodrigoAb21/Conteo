@@ -26,6 +26,7 @@ class ParticipanteController extends Controller
     {
         $participante = new Participante();
         $participante->nombre = $request['nombre'];
+        $participante->sigla = $request['sigla'];
         $participante->color = $request['color'];
         $participante->save();
 
@@ -45,6 +46,7 @@ class ParticipanteController extends Controller
     {
         $participante = Participante::findOrFail($id);
         $participante->nombre = $request['nombre'];
+        $participante->sigla = $request['sigla'];
         $participante->color = $request['color'];
         $participante->update();
 

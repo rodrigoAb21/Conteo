@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-5">
         <div class="row">
-            <div class="col-6 ml-auto mr-auto">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ml-auto mr-auto">
                 <div class="card text-center" >
                     <h2 class="mt-4">Elecciones Disponibles</h2>
                     @foreach($elecciones as $eleccion)

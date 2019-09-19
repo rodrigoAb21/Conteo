@@ -15,7 +15,7 @@
                                     <select class="form-control" name="participante_id">
                                         @foreach($opciones as $opcion)
                                             <option value="{{$opcion->id}}">
-                                                {{$opcion->nombre}}
+                                                {{$opcion->sigla}}
                                             </option>
                                         @endforeach
                                     </select>
@@ -35,7 +35,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>NOMBRE</th>
+                                <th>SIGLA</th>
                                 <th>COLOR</th>
                                 <th class="text-right">OPCIONES</th>
                             </tr>
@@ -44,7 +44,7 @@
                             @foreach($participantes as $participante)
                                 <tr>
                                     <td>{{$loop -> iteration}}</td>
-                                    <td>{{$participante -> nombre}}</td>
+                                    <td>{{$participante -> sigla}}</td>
                                     <td style="background: {{$participante -> color}};"></td>
                                     <td class="text-right ">
                                         <a href="{{url("admin/elecciones/asignaciones/$eleccion->id/$participante->id/quitar")}}">

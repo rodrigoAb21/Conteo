@@ -17,7 +17,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>NOMBRE</th>
+                                <th>SIGLA</th>
                                 <th>COLOR</th>
                                 <th class="text-right">OPCIONES</th>
                             </tr>
@@ -25,16 +25,16 @@
                             <tbody>
                             @foreach($participantes as $participante)
                                 <tr>
-                                    <td>{{$participante -> id}}</td>
-                                    <td>{{$participante -> nombre}}</td>
-                                    <td style="background: {{$participante -> color}};"></td>
+                                    <td>{{$participante->id}}</td>
+                                    <td>{{$participante->sigla}}</td>
+                                    <td style="background: {{$participante->color}};"></td>
                                     <td class="text-right ">
                                         <a href="{{url('admin/participantes/'.$participante->id.'/edit')}}">
                                             <button class="btn btn-warning">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$participante -> nombre}}', '{{url('admin/participantes/'.$participante -> id)}}')">
+                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$participante->sigla}}', '{{url('admin/participantes/'.$participante->id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

@@ -243,38 +243,71 @@ class DatabaseSeeder extends Seeder
         //Poblando Participantes
         DB::table('participante')->insert([
             'nombre' => 'BLANCO',
+            'sigla' => 'BLANCO',
             'color' => '#ffffff',
         ]);
 
         DB::table('participante')->insert([
             'nombre' => 'NULO',
+            'sigla' => 'NULO',
             'color' => '#b0aeae',
         ]);
 
         DB::table('participante')->insert([
-            'nombre' => 'NFR',
-            'color' => '#9a3ab2',
+            'nombre' => 'BOLIVIA DICE NO',
+            'sigla' => '21F',
+            'color' => '#a40000',
         ]);
 
         DB::table('participante')->insert([
-            'nombre' => 'MNR',
-            'color' => '#ff97d6',
+            'nombre' => 'COMUNIDAD CIUDADANA',
+            'sigla' => 'CC',
+            'color' => '#ff8000',
         ]);
 
         DB::table('participante')->insert([
-            'nombre' => 'MAS',
-            'color' => '#0d38db',
+            'nombre' => 'FRENTE PARA LA VICTORIA',
+            'sigla' => 'FPV',
+            'color' => '#004040',
         ]);
 
         DB::table('participante')->insert([
-            'nombre' => 'MIR',
-            'color' => '#ff6a2a',
+            'nombre' => 'MOVIMIENTO AL SOCIALISMO - INSTRUMENTO POLÍTICO POR LA SOBERANÍA DE LOS PUEBLOS',
+            'sigla' => 'MAS-IPSP',
+            'color' => '#003887',
         ]);
 
         DB::table('participante')->insert([
-            'nombre' => 'PRI',
-            'color' => '#00933e',
+            'nombre' => 'MOVIMIENTO NACIONALISTA REVOLUCIONARIO',
+            'sigla' => 'MNR',
+            'color' => '#ff80c0',
         ]);
+
+        DB::table('participante')->insert([
+            'nombre' => 'MOVIMIENTO TERCER SISTEMA',
+            'sigla' => 'MTS',
+            'color' => '#006f37',
+        ]);
+
+        DB::table('participante')->insert([
+            'nombre' => 'PARTIDO DE ACCIÓN NACIONAL BOLIVIANO',
+            'sigla' => 'PAN-BOL',
+            'color' => '#ff2828',
+        ]);
+
+        DB::table('participante')->insert([
+            'nombre' => 'PARTIDO DEMÓCRATA CRISTIANO',
+            'sigla' => 'PDC',
+            'color' => '#326363',
+        ]);
+
+        DB::table('participante')->insert([
+            'nombre' => 'UNIDAD CÍVICA SOLIDARIDAD',
+            'sigla' => 'UCS',
+            'color' => '#039efc',
+        ]);
+
+
 
         //Poblando Elecciones
 
@@ -295,68 +328,27 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Poblando Participante_Eleccion
+        for ($j = 1; $j <= 2; $j++) {
+            for ($i = 1; $i <= 11; $i++) {
+                DB::table('participante_eleccion')->insert([
+                    'participante_id' => $i,
+                    'eleccion_id' => $j,
+                ]);
+            }
+        }
 
-        DB::table('participante_eleccion')->insert([
-            'participante_id' => 1,
-            'eleccion_id' => 1,
-        ]);
-
-        DB::table('participante_eleccion')->insert([
-            'participante_id' => 2,
-            'eleccion_id' => 1,
-        ]);
-
-        DB::table('participante_eleccion')->insert([
-            'participante_id' => 3,
-            'eleccion_id' => 1,
-        ]);
-
-        DB::table('participante_eleccion')->insert([
-            'participante_id' => 4,
-            'eleccion_id' => 1,
-        ]);
-
-        DB::table('participante_eleccion')->insert([
-            'participante_id' => 5,
-            'eleccion_id' => 1,
-        ]);
-
-        DB::table('participante_eleccion')->insert([
-            'participante_id' => 1,
-            'eleccion_id' => 2,
-        ]);
-
-        DB::table('participante_eleccion')->insert([
-            'participante_id' => 2,
-            'eleccion_id' => 2,
-        ]);
-
-        DB::table('participante_eleccion')->insert([
-            'participante_id' => 3,
-            'eleccion_id' => 2,
-        ]);
-
-        DB::table('participante_eleccion')->insert([
-            'participante_id' => 5,
-            'eleccion_id' => 2,
-        ]);
-
-        DB::table('participante_eleccion')->insert([
-            'participante_id' => 7,
-            'eleccion_id' => 2,
-        ]);
 
         // Poblando Resultados
 
         for ($i = 1; $i <= 35; $i++) {
             DB::table('resultado')->insert([
-                'total' => rand(0,20),
+                'total' => rand(0,10),
                 'mesa_id' => $i,
                 'participante_eleccion_id' => 1,
             ]);
 
             DB::table('resultado')->insert([
-                'total' => rand(0,20),
+                'total' => rand(0,10),
                 'mesa_id' => $i,
                 'participante_eleccion_id' => 2,
             ]);
@@ -377,6 +369,42 @@ class DatabaseSeeder extends Seeder
                 'total' => rand(0,20),
                 'mesa_id' => $i,
                 'participante_eleccion_id' => 5,
+            ]);
+
+            DB::table('resultado')->insert([
+                'total' => rand(0,10),
+                'mesa_id' => $i,
+                'participante_eleccion_id' => 6,
+            ]);
+
+            DB::table('resultado')->insert([
+                'total' => rand(0,20),
+                'mesa_id' => $i,
+                'participante_eleccion_id' => 7,
+            ]);
+
+            DB::table('resultado')->insert([
+                'total' => rand(0,20),
+                'mesa_id' => $i,
+                'participante_eleccion_id' => 8,
+            ]);
+
+            DB::table('resultado')->insert([
+                'total' => rand(0,20),
+                'mesa_id' => $i,
+                'participante_eleccion_id' => 9,
+            ]);
+
+            DB::table('resultado')->insert([
+                'total' => rand(0,20),
+                'mesa_id' => $i,
+                'participante_eleccion_id' => 10,
+            ]);
+
+            DB::table('resultado')->insert([
+                'total' => rand(0,20),
+                'mesa_id' => $i,
+                'participante_eleccion_id' => 11,
             ]);
         }
 
