@@ -45,4 +45,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', 'Web\WebController@getEleccionesActivas');
-Route::get('resultados/{id}', 'Web\WebController@resultados_generales');
+Route::get('resultados/{eleccion_id}', 'Web\WebController@resultados_generales');
+Route::get('resultados/{eleccion_id}/{dpto_id}', 'Web\WebController@resultados_departamento');
+Route::get('resultados/{eleccion_id}/{dpto_id}/{prov_id}', 'Web\WebController@resultados_provincia');
+Route::get('resultados/{eleccion_id}/{dpto_id}/{prov_id}/{local_id}', 'Web\WebController@resultados_localidad');
+Route::get('resultados/{eleccion_id}/{dpto_id}/{prov_id}/{local_id}/{rec_id}', 'Web\WebController@resultados_recinto');
+Route::get('resultados/{eleccion_id}/{dpto_id}/{prov_id}/{local_id}/{rec_id}/{mesa_id}', 'Web\WebController@resultados_mesa');
+

@@ -6,7 +6,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="pb-2">Resultados Generales: "{{$eleccion->nombre}}"</h3>
+                        <h3 class="pb-2">"{{$eleccion->nombre}}" - {{$departamento->nombre}} - {{$provincia->nombre}}</h3>
                         <div class="row">
 
                             <div class="col-lg-6">
@@ -58,7 +58,7 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="pb-2">Departamentos</h3>
+                                <h3 class="pb-2">Localidades</h3>
                                 <div class="table-responsive">
                                     <table class="table table-hover table-bordered color-table primary-table">
                                         <thead>
@@ -69,12 +69,12 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($departamentos as $departamento)
+                                        @foreach($localidades as $localidad)
                                             <tr>
-                                                <td class="text-center">{{$departamento->id}}</td>
-                                                <td class="text-center">{{$departamento->nombre}}</td>
+                                                <td class="text-center">{{$localidad->id}}</td>
+                                                <td class="text-center">{{$localidad->nombre}}</td>
                                                 <td class="text-center ">
-                                                    <a href="{{url('resultados/'.$eleccion->id.'/'.$departamento->id)}}">
+                                                    <a href="{{url("resultados/$eleccion->id/$departamento->id/$provincia->id/$localidad->id")}}">
                                                         <button class="btn btn-primary">
                                                             Ver resultados
                                                         </button>
@@ -84,14 +84,19 @@
                                         @endforeach
                                         </tbody>
                                     </table>
-                                    {{$departamentos->links('pagination.default')}}
+                                    {{$localidades->links('pagination.default')}}
                                 </div>
                             </div>
                         </div>
                         <br>
-                        <a href="{{url('/')}}">
+                        <a href="{{url("/resultados/$eleccion->id/$departamento->id")}}">
                             <button class="btn btn-primary">
-                                <i class="fa fa-arrow-left"></i> Atras
+                                 {{$departamento->nombre}}
+                            </button>
+                        </a>
+                        <a href="{{url("/resultados/$eleccion->id")}}">
+                            <button class="btn btn-primary">
+                                General
                             </button>
                         </a>
                     </div>
