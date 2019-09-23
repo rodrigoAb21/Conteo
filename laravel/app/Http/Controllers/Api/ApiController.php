@@ -9,6 +9,7 @@ use App\Resultado;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Exception;
 
 class ApiController extends Controller
 {
@@ -22,26 +23,24 @@ class ApiController extends Controller
 
     public function guardarResultados(Request $request)
     {
-        try {
-            DB::beginTransaction();
+
+
             $eleccion_id = $request['eleccion_id'];
             $mesa_id = $request['mesa_id'];
             $resultados = $request['resultados'];
             foreach ($resultados as $resultado) {
-                $resultado2 = new Resultado();
-                $resultado2->mesa_id = $mesa_id;
-                $resultado2->participante_eleccion_id = $this->getParticipante($eleccion_id, $resultado['sigla']);
-                $resultado2->total = $resultado['total'];
-                $resultado2->save();
+                try{
+                    $resultado2 = new Resultado();
+                    $resultado2->mesa_id = $mesa_id;
+                    $resultado2->participante_eleccion_id = $this->getParticipante($eleccion_id, $resultado['sigla']);
+                    $resultado2->total = $resultado['total'];
+                    $resultado2->save();
+                } catch (\Exception $e){
+                    // algo :v
+                }
             }
 
-            DB::commit();
             return response()->json(null,200);
-        } catch (Exception $e) {
-            DB::rollback();
-            return response()->json(null,500);
-        }
-
 
     }
 
