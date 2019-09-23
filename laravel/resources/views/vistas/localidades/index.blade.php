@@ -19,6 +19,7 @@
                                 <th>ID</th>
                                 <th>NOMBRE</th>
                                 <th>PROVINCIA</th>
+                                <th>DEPARTAMENTO</th>
                                 <th>OPCIONES</th>
                             </tr>
                             </thead>
@@ -28,6 +29,7 @@
                                     <td>{{$localidad->id}}</td>
                                     <td>{{$localidad->nombre}}</td>
                                     <td>{{$localidad->provincia->nombre}}</td>
+                                    <td>{{$localidad->provincia->departamento->nombre}}</td>
                                     <td class="text-right ">
                                         <a href="{{url('admin/localidades/'.$localidad->id.'/edit')}}">
                                             <button class="btn btn-warning">

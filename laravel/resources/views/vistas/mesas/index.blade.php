@@ -18,8 +18,10 @@
                             <tr>
                                 <th>ID</th>
                                 <th>NOMBRE</th>
-                                <th>NRO_INSCRTIOS</th>
+                                <th>INSCRTIOS</th>
                                 <th>RECINTO</th>
+                                <th>LOCALIDAD</th>
+                                <th>PROVINCIA</th>
                                 <th>OPCIONES</th>
                             </tr>
                             </thead>
@@ -30,6 +32,8 @@
                                     <td>{{$mesa->nombre}}</td>
                                     <td>{{$mesa->inscritos}}</td>
                                     <td>{{$mesa->recinto->nombre}}</td>
+                                    <td>{{$mesa->recinto->localidad->nombre}}</td>
+                                    <td>{{$mesa->recinto->localidad->provincia->nombre}}</td>
                                     <td class="text-right ">
                                         <a href="{{url('admin/mesas/'.$mesa->id.'/edit')}}">
                                             <button class="btn btn-warning">

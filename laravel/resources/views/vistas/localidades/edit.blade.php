@@ -30,11 +30,11 @@
                                         @foreach($provincias as $provincia)
                                             @if($provincia->id == $localidad->provincia_id)
                                                 <option selected value="{{$provincia->id}}">
-                                                    {{$provincia->nombre}}
+                                                    {{$provincia->nombre}} - {{$provincia->departamento->nombre}}
                                                 </option>
                                             @else
                                                 <option value="{{$provincia->id}}">
-                                                    {{$provincia->nombre}}
+                                                    {{$provincia->nombre}} - {{$provincia->departamento->nombre}}
                                                 </option>
                                             @endif
                                         @endforeach

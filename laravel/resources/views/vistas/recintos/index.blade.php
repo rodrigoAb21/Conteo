@@ -20,6 +20,7 @@
                                 <th>NOMBRE</th>
                                 <th>DIRECCION</th>
                                 <th>LOCALIDAD</th>
+                                <th>PROVINCIA</th>
                                 <th>OPCIONES</th>
                             </tr>
                             </thead>
@@ -30,6 +31,7 @@
                                     <td>{{$recinto->nombre}}</td>
                                     <td>{{$recinto->direccion}}</td>
                                     <td>{{$recinto->localidad->nombre}}</td>
+                                    <td>{{$recinto->localidad->provincia->nombre}}</td>
                                     <td class="text-right ">
                                         <a href="{{url('admin/recintos/'.$recinto->id.'/edit')}}">
                                             <button class="btn btn-warning">
