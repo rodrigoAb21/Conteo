@@ -30,8 +30,15 @@ Route::get('admin', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('admin/elecciones', 'Web\EleccionController');
-    Route::get('admin/elecciones/resultados/{id}', 'Web\EleccionController@resultados_generales');
-    Route::get('admin/elecciones/asignaciones/{id_eleccion}/{id_p_e}/quitar', 'Web\EleccionController@quitar');
+
+    Route::get('admin/elecciones/resultados/{eleccion_id}', 'Web\EleccionController@resultados_generales');
+    Route::get('admin/elecciones/resultados/{eleccion_id}/{dpto_id}', 'Web\EleccionController@resultados_departamento');
+    Route::get('admin/elecciones/resultados/{eleccion_id}/{dpto_id}/{prov_id}', 'Web\EleccionController@resultados_provincia');
+    Route::get('admin/elecciones/resultados/{eleccion_id}/{dpto_id}/{prov_id}/{local_id}', 'Web\EleccionController@resultados_localidad');
+    Route::get('admin/elecciones/resultados/{eleccion_id}/{dpto_id}/{prov_id}/{local_id}/{rec_id}', 'Web\EleccionController@resultados_recinto');
+    Route::get('admin/elecciones/resultados/{eleccion_id}/{dpto_id}/{prov_id}/{local_id}/{rec_id}/{mesa_id}', 'Web\EleccionController@resultados_mesa');
+
+    Route::get('admin/elecciones/elecciones/asignaciones/{id_eleccion}/{id_p_e}/quitar', 'Web\EleccionController@quitar');
     Route::get('admin/elecciones/asignaciones/{id}', 'Web\EleccionController@verAsignacion');
     Route::post('admin/elecciones/asignaciones/{id}', 'Web\EleccionController@asignar');
 
