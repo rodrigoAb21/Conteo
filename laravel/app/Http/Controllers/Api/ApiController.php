@@ -8,8 +8,6 @@ use App\ParticipanteEleccion;
 use App\Resultado;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use mysql_xdevapi\Exception;
 
 class ApiController extends Controller
 {
