@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "608554289273",
+    "firebase_url": "https://graphite-girder-253500.firebaseio.com",
+    "project_id": "graphite-girder-253500",
+    "storage_bucket": "graphite-girder-253500.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608554289273:android:7f7bf8a869c1e04587aca8",
+        "android_client_info": {
+          "package_name": "com.example.firebase_vision"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608554289273-n47adlm4boreoki16qv28af3ubh0bqj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB13zQN5fJxo6yjHmWPKmeBUUDeNF846J8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608554289273-n47adlm4boreoki16qv28af3ubh0bqj7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
