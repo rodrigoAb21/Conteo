@@ -15,7 +15,6 @@ class ListaEleccionesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Elecciones'),
-        centerTitle: true,
         backgroundColor: Colors.blue,
       ),
       body: ListView(

@@ -17,8 +17,17 @@ class _QrPageState extends State<QrPage> {
 
   bool isImageLoaded = false;
 
-  Future pickImage() async {
+  Future pickImageGallery() async {
     var tempStore = await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      pickedImage = tempStore;
+      isImageLoaded = true;
+    });
+  }
+
+  Future pickImageCamera() async {
+    var tempStore = await ImagePicker.pickImage(source: ImageSource.camera);
 
     setState(() {
       pickedImage = tempStore;
@@ -53,34 +62,38 @@ class _QrPageState extends State<QrPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+        ),
         body: Column(
-      children: <Widget>[
-        SizedBox(height: 100.0),
-        isImageLoaded
-            ? Center(
-                child: Container(
-                    height: 200.0,
-                    width: 200.0,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: FileImage(pickedImage), fit: BoxFit.cover))),
-              )
-            : Container(),
-        SizedBox(height: 10.0),
-        RaisedButton(
-          child: Text('Pick an image'),
-          onPressed: pickImage,
-        ),
-        SizedBox(height: 10.0),
-        RaisedButton(
-          child: Text('Read Text'),
-          onPressed: readText,
-        ),
-        RaisedButton(
-          child: Text('Read Bar Code'),
-          onPressed: decode,
-        )
-      ],
-    ));
+          children: <Widget>[
+            SizedBox(height: 100.0),
+            isImageLoaded
+                ? Center(
+                    child: Container(
+                        height: 200.0,
+                        width: 200.0,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: FileImage(pickedImage),
+                                fit: BoxFit.cover))),
+                  )
+                : Container(),
+            SizedBox(height: 10.0),
+            RaisedButton(
+              child: Text('Pick an image'),
+              onPressed: pickImageGallery,
+            ),
+            SizedBox(height: 10.0),
+            RaisedButton(
+              child: Text('Read Text'),
+              onPressed: readText,
+            ),
+            RaisedButton(
+              child: Text('Read Bar Code'),
+              onPressed: decode,
+            )
+          ],
+        ));
   }
 }

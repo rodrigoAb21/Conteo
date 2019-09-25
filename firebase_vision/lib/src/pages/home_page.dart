@@ -41,7 +41,9 @@ class _HomePageState extends State<HomePage> {
             child: const ModalBarrier(dismissible: false, color: Colors.grey),
           ),
           new Center(
-            child: new CircularProgressIndicator(),
+            child: new CircularProgressIndicator(
+              valueColor: new AlwaysStoppedAnimation<Color>(Colors.orangeAccent),
+            ),
           ),
         ],
       );
