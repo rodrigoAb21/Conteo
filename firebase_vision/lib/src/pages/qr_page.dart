@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 
@@ -18,21 +16,35 @@ class _QrPageState extends State<QrPage> {
   bool isImageLoaded = false;
 
   Future pickImageGallery() async {
-    var tempStore = await ImagePicker.pickImage(source: ImageSource.gallery);
-
-    setState(() {
-      pickedImage = tempStore;
-      isImageLoaded = true;
-    });
+    try {
+     var tempStore = await ImagePicker.pickImage(source: ImageSource.gallery);
+     if (tempStore == null) {
+       throw Exception('File is not available');
+     } else {
+        setState(() {
+          pickedImage = tempStore;
+          isImageLoaded = true;
+        });
+     }
+    } on Exception catch (e){
+      print(e);
+    }
   }
 
   Future pickImageCamera() async {
-    var tempStore = await ImagePicker.pickImage(source: ImageSource.camera);
-
-    setState(() {
-      pickedImage = tempStore;
-      isImageLoaded = true;
-    });
+    try {
+     var tempStore = await ImagePicker.pickImage(source: ImageSource.camera);
+     if (tempStore == null) {
+       throw Exception('File is not available');
+     } else {
+        setState(() {
+          pickedImage = tempStore;
+          isImageLoaded = true;
+        });
+     }
+    } on Exception catch (e){
+      print(e);
+    }
   }
 
   Future readText() async {

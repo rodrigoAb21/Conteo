@@ -21,10 +21,8 @@ class ApiController extends Controller
 
     public function guardarResultados(Request $request)
     {
-
-
-            $eleccion_id = $request['eleccion_id'];
-            $mesa_id = $request['mesa_id'];
+            $eleccion_id = $request['eleccionId'];
+            $mesa_id = $request['mesaId'];
             $resultados = $request['resultados'];
             foreach ($resultados as $resultado) {
                 try{
