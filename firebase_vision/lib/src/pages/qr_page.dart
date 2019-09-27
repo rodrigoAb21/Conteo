@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
+import 'package:firebase_vision/src/models/eleccion_model.dart';
+import 'package:firebase_vision/src/models/participante_model.dart';
 import 'package:firebase_vision/src/models/respuesta.dart';
 import 'package:firebase_vision/src/models/resultado_participante.dart';
 import 'package:flutter/material.dart';
@@ -21,77 +22,109 @@ class _QrPageState extends State<QrPage> {
 
   Future pickImageGallery() async {
 
-    respuesta = new Respuesta();
-    respuesta.eleccionId = 1;
-    respuesta.mesaId = 2;
-    resultados  = new List();
-    resultados.add(new ResultadoParticipante("21F", 34));
-    resultados.add(new ResultadoParticipante("MAS", 66));
-    resultados.add(new ResultadoParticipante("NFR", 22));
-    resultados.add(new ResultadoParticipante("MNR", 76));
-    respuesta.resultados = resultados;
-    
-    print(jsonEncode(respuesta));
-    
-
-
     try {
-     var tempStore = await ImagePicker.pickImage(source: ImageSource.gallery);
-     if (tempStore == null) {
-       throw Exception('File is not available');
-     } else {
+      var tempStore = await ImagePicker.pickImage(source: ImageSource.gallery);
+      if (tempStore == null) {
+        throw Exception('File is not available');
+      } else {
         setState(() {
           pickedImage = tempStore;
           isImageLoaded = true;
         });
-     }
-    } on Exception catch (e){
+      }
+    } on Exception catch (e) {
       print(e);
     }
   }
 
   Future pickImageCamera() async {
     try {
-     var tempStore = await ImagePicker.pickImage(source: ImageSource.camera);
-     if (tempStore == null) {
-       throw Exception('File is not available');
-     } else {
+      var tempStore = await ImagePicker.pickImage(source: ImageSource.camera);
+      if (tempStore == null) {
+        throw Exception('File is not available');
+      } else {
         setState(() {
           pickedImage = tempStore;
           isImageLoaded = true;
         });
-     }
-    } on Exception catch (e){
+      }
+    } on Exception catch (e) {
       print(e);
     }
   }
 
-  Future readText() async {
-    FirebaseVisionImage ourImage = FirebaseVisionImage.fromFile(pickedImage);
-    TextRecognizer recognizeText = FirebaseVision.instance.textRecognizer();
-    VisionText readText = await recognizeText.processImage(ourImage);
-
-    for (TextBlock block in readText.blocks) {
-      for (TextLine line in block.lines) {
-        for (TextElement word in line.elements) {
-          print(word.text);
-        }
+  int devolverId(String sigla, List<Participante> participantes) {
+    participantes.forEach((participante) {
+      if (participante.sigla.contains(sigla)) {
+        return participante.id;
       }
-    }
+    });
+    return -1;
   }
 
-  Future decode() async {
+  showAlertDialog(BuildContext context) {
+ 
+  
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("UPS!"),
+    content: Text("No se pudo leer el QR.\nPor favor utilice otra foto."),
+    
+  );
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+
+
+
+
+  extraerDatos(Eleccion eleccion, BuildContext context) async {
+    respuesta = new Respuesta();
+    // QR 
     FirebaseVisionImage ourImage = FirebaseVisionImage.fromFile(pickedImage);
     BarcodeDetector barcodeDetector = FirebaseVision.instance.barcodeDetector();
     List barCodes = await barcodeDetector.detectInImage(ourImage);
 
     for (Barcode readableCode in barCodes) {
-      print(readableCode.displayValue);
+      respuesta.mesaId = int.parse(readableCode.displayValue);
     }
+
+    if (respuesta.mesaId != null && respuesta.mesaId > 0) {
+      // TEXTO
+      TextRecognizer recognizeText = FirebaseVision.instance.textRecognizer();
+      VisionText readText = await recognizeText.processImage(ourImage);
+
+      for (TextBlock block in readText.blocks) {
+        for (TextLine line in block.lines) {
+          for (TextElement word in line.elements) {
+            print(word.text);
+          }
+        }
+      }
+    } else {
+      showAlertDialog(context);
+    }
+
+    
+
   }
+
+  enviar(){
+    // enviar respuesta
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
+    Eleccion eleccion = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
@@ -112,17 +145,30 @@ class _QrPageState extends State<QrPage> {
                 : Container(),
             SizedBox(height: 10.0),
             RaisedButton(
-              child: Text('Pick an image'),
-              onPressed: pickImageGallery,
+              child: Text('TOMAR FOTO'),
+              onPressed: pickImageCamera,
+              color: Colors.blue,
+              textColor: Colors.white,
             ),
             SizedBox(height: 10.0),
             RaisedButton(
-              child: Text('Read Text'),
-              onPressed: readText,
+              child: Text('SELECCIONAR DE GALERIA'),
+              onPressed: pickImageGallery,
+              color: Colors.blue,
+              textColor: Colors.white,
+            ),
+            SizedBox(height: 10.0),
+            RaisedButton(
+              child: Text('EXTRAER DATOS'),
+              onPressed: (){extraerDatos(eleccion, context);},
+              color: Colors.blue,
+              textColor: Colors.white,
             ),
             RaisedButton(
-              child: Text('Read Bar Code'),
-              onPressed: decode,
+              child: Text('ENVIAR'),
+              onPressed: enviar,
+              color: Colors.blue,
+              textColor: Colors.white,
             )
           ],
         ));

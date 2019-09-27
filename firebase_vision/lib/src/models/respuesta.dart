@@ -13,4 +13,5 @@ class Respuesta {
       'mesaId': mesaId,
       'resultados' : resultados
     };
+
 }

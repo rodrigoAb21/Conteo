@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           RaisedButton(
             onPressed: () => _submit(context),
-            child: Text("TOMAR FOTO"),
+            child: Text("EMPEZAR"),
             color: Colors.blue,
             textColor: Colors.white,
           ),
