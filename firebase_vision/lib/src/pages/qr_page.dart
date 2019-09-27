@@ -1,5 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
+import 'package:firebase_vision/src/models/respuesta.dart';
+import 'package:firebase_vision/src/models/resultado_participante.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
@@ -12,10 +15,26 @@ class QrPage extends StatefulWidget {
 
 class _QrPageState extends State<QrPage> {
   File pickedImage;
-
   bool isImageLoaded = false;
+  Respuesta respuesta;
+  List<ResultadoParticipante> resultados;
 
   Future pickImageGallery() async {
+
+    respuesta = new Respuesta();
+    respuesta.eleccionId = 1;
+    respuesta.mesaId = 2;
+    resultados  = new List();
+    resultados.add(new ResultadoParticipante("21F", 34));
+    resultados.add(new ResultadoParticipante("MAS", 66));
+    resultados.add(new ResultadoParticipante("NFR", 22));
+    resultados.add(new ResultadoParticipante("MNR", 76));
+    respuesta.resultados = resultados;
+    
+    print(jsonEncode(respuesta));
+    
+
+
     try {
      var tempStore = await ImagePicker.pickImage(source: ImageSource.gallery);
      if (tempStore == null) {

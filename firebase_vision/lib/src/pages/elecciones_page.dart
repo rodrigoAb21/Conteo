@@ -24,6 +24,7 @@ class ListaEleccionesPage extends StatelessWidget {
   }
 
   List<Widget> _cargarLista(BuildContext context, List<Eleccion> lista) {
+    print(lista[0].participantes.length);
     List<Widget> list = [];
     for (var item in lista) {
       list.add(ListTile(

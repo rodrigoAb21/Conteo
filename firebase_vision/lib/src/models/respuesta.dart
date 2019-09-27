@@ -5,5 +5,12 @@ class Respuesta {
   int mesaId;
   List<ResultadoParticipante> resultados;
 
-  Respuesta(this.eleccionId, this.mesaId, this.resultados);
+  Respuesta();
+
+  Map<String, dynamic> toJson() =>
+    {
+      'eleccionId': eleccionId,
+      'mesaId': mesaId,
+      'resultados' : resultados
+    };
 }
