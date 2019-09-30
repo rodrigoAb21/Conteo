@@ -101,18 +101,18 @@ class _QrPageState extends State<QrPage> {
       VisionText readText = await recognizeText.processImage(ourImage);
 
       for (TextBlock block in readText.blocks) {
+        print("----------BLOQUE------------");
         for (TextLine line in block.lines) {
+          print("----------LINEA------------");
           for (TextElement word in line.elements) {
             print(word.text);
           }
         }
       }
+
     } else {
       showAlertDialog(context);
     }
-
-    
-
   }
 
   enviar(){
