@@ -1,12 +1,15 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'package:firebase_vision/src/models/eleccion_model.dart';
 import 'package:firebase_vision/src/models/participante_model.dart';
 import 'package:firebase_vision/src/models/respuesta.dart';
 import 'package:firebase_vision/src/models/resultado_participante.dart';
+import 'package:firebase_vision/src/util/funciones.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
+import 'package:http/http.dart' as http;
 
 class QrPage extends StatefulWidget {
   static final String routeName = 'qr_page';
@@ -21,7 +24,6 @@ class _QrPageState extends State<QrPage> {
   List<ResultadoParticipante> resultados;
 
   Future pickImageGallery() async {
-
     try {
       var tempStore = await ImagePicker.pickImage(source: ImageSource.gallery);
       if (tempStore == null) {
@@ -63,63 +65,99 @@ class _QrPageState extends State<QrPage> {
   }
 
   showAlertDialog(BuildContext context) {
- 
-  
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: Text("UPS!"),
-    content: Text("No se pudo leer el QR.\nPor favor utilice otra foto."),
-    
-  );
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
-}
-
-
-
-
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("UPS!"),
+      content: Text("No se pudo leer el QR.\nPor favor utilice otra foto."),
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 
   extraerDatos(Eleccion eleccion, BuildContext context) async {
-    respuesta = new Respuesta();
-    // QR 
-    FirebaseVisionImage ourImage = FirebaseVisionImage.fromFile(pickedImage);
-    BarcodeDetector barcodeDetector = FirebaseVision.instance.barcodeDetector();
-    List barCodes = await barcodeDetector.detectInImage(ourImage);
+    if (isImageLoaded) {
+      respuesta = new Respuesta();
+      resultados = new List();
 
-    for (Barcode readableCode in barCodes) {
-      respuesta.mesaId = int.parse(readableCode.displayValue);
-    }
+      // QR
+      FirebaseVisionImage ourImage = FirebaseVisionImage.fromFile(pickedImage);
+      BarcodeDetector barcodeDetector =
+          FirebaseVision.instance.barcodeDetector();
+      List barCodes = await barcodeDetector.detectInImage(ourImage);
 
-    if (respuesta.mesaId != null && respuesta.mesaId > 0) {
-      // TEXTO
-      TextRecognizer recognizeText = FirebaseVision.instance.textRecognizer();
-      VisionText readText = await recognizeText.processImage(ourImage);
-
-      for (TextBlock block in readText.blocks) {
-        print("----------BLOQUE------------");
-        for (TextLine line in block.lines) {
-          print("----------LINEA------------");
-          for (TextElement word in line.elements) {
-            print(word.text);
-          }
+      for (Barcode readableCode in barCodes) {
+        try {
+          respuesta.mesaId = int.parse(readableCode.displayValue);
+        } on Exception catch (e) {
+          print(e);
         }
       }
 
-    } else {
-      showAlertDialog(context);
+      if (respuesta.mesaId != null && respuesta.mesaId > 0) {
+        // TEXTO
+        TextRecognizer recognizeText = FirebaseVision.instance.textRecognizer();
+        VisionText readText = await recognizeText.processImage(ourImage);
+
+        for (TextBlock block in readText.blocks) {
+          print("----------BLOQUE------------");
+          for (TextLine line in block.lines) {
+            print("----------LINEA------------");
+            ResultadoParticipante resultado = new ResultadoParticipante();
+            bool sw1, sw2 = false;
+            
+            for (int i = 0; i < line.elements.length; i++) {
+              // buscando participante
+              if (i == 0) {
+                int id = Funciones.getParticipante(
+                    line.elements[i].text, eleccion.participantes);
+                if (id >= 0) {
+                  resultado.id = id;
+                  sw1 = true;
+                }
+              } else {
+                //buscando numero
+                int total = Funciones.getTotal(line.elements[i].text);
+                if (sw2 == false && total >= 0) {
+                  resultado.total = total;
+                  sw2 = true;
+                }
+              }
+              print(line.elements[i].text);
+            }
+
+            //agregando item a resultados
+            if (sw1 == true && sw2 == true) {
+              resultados.add(resultado);
+            }
+          }
+        }
+        print('Total de resultados encontrados: ${resultados.length}');
+      } else {
+        showAlertDialog(context);
+      }
     }
   }
 
-  enviar(){
-    // enviar respuesta
+  enviar() async {
+    if (resultados.length > 0) {
+      respuesta.resultados = resultados;
+      print(jsonEncode(respuesta));
+
+      final resp = await http.post('http://testsoft.nl/api/resultados',
+          body: jsonEncode(respuesta),
+          headers: {"Content-Type": "application/json"});
+      if (resp.statusCode == 200) {
+        print('OK!');
+      } else {
+        print(resp.statusCode);
+      }
+    }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +198,9 @@ class _QrPageState extends State<QrPage> {
             SizedBox(height: 10.0),
             RaisedButton(
               child: Text('EXTRAER DATOS'),
-              onPressed: (){extraerDatos(eleccion, context);},
+              onPressed: () {
+                extraerDatos(eleccion, context);
+              },
               color: Colors.blue,
               textColor: Colors.white,
             ),
