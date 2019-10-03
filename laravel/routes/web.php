@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/elecciones/resultados/{eleccion_id}/{dpto_id}/{prov_id}/{local_id}/{rec_id}', 'Web\EleccionController@resultados_recinto');
     Route::get('admin/elecciones/resultados/{eleccion_id}/{dpto_id}/{prov_id}/{local_id}/{rec_id}/{mesa_id}', 'Web\EleccionController@resultados_mesa');
 
-    Route::get('admin/elecciones/elecciones/asignaciones/{id_eleccion}/{id_p_e}/quitar', 'Web\EleccionController@quitar');
+    Route::get('admin/elecciones/asignaciones/{id_eleccion}/{id_p_e}/quitar', 'Web\EleccionController@quitar');
     Route::get('admin/elecciones/asignaciones/{id}', 'Web\EleccionController@verAsignacion');
     Route::post('admin/elecciones/asignaciones/{id}', 'Web\EleccionController@asignar');
 
