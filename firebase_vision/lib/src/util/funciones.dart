@@ -19,11 +19,21 @@ class Funciones {
     return cont >= ((nombre.length ~/ 2) + 1);
   }
 
+  static bool buscarSimilitud2(String palabra, String nombre) {
+    int cont = 0;
+    for (int i = 0; i < palabra.length; i++) {
+      if (nombre.contains(palabra[i])) {
+        cont++;
+      }
+    }
 
-  static String limpiarPalabra(String palabra){
+    return cont >= ((nombre.length ~/ 2) + 1);
+  }
+
+  static String limpiarPalabra(String palabra) {
     String nueva = '';
     for (var i = 0; i < palabra.length; i++) {
-      if(palabra[i] != '.' && palabra[i] != '='){
+      if (palabra[i] != '.' && palabra[i] != '=') {
         nueva = nueva + palabra[i];
       }
     }
@@ -36,7 +46,11 @@ class Funciones {
     while (i < participantes.length) {
       if (participantes[i].sigla.contains(palabra.trim())) {
         return participantes[i].id;
-      } else if (buscarSimilitud(limpiarPalabra(palabra), participantes[i].sigla)) {
+      } else if (buscarSimilitud(
+          limpiarPalabra(palabra), participantes[i].sigla)) {
+        return participantes[i].id;
+      } else if (buscarSimilitud2(
+          limpiarPalabra(palabra), participantes[i].sigla)) {
         return participantes[i].id;
       }
       i++;
