@@ -4,7 +4,7 @@ return [
     'name' => 'Elecciones',
     'manifest' => [
         'name' => env('APP_NAME', 'Elecciones'),
-        'short_name' => 'PWA',
+        'short_name' => 'Elecciones',
         'start_url' => '/',
         'background_color' => '#ffffff',
         'theme_color' => '#ffffff',
