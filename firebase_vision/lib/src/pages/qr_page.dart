@@ -29,50 +29,52 @@ class _QrPageState extends State<QrPage> {
   List<Widget> _buildPage(BuildContext context, Eleccion eleccion) {
     Center principal = new Center(
       child: Column(
-          children: <Widget>[
-            SizedBox(height: 100.0),
-            isImageLoaded
-                ? Center(
-                    child: Container(
-                        height: 200.0,
-                        width: 200.0,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: FileImage(pickedImage),
-                                fit: BoxFit.cover))),
-                  )
-                : Container(),
-            SizedBox(height: 10.0),
-            RaisedButton(
-              child: Text('TOMAR FOTO'),
-              onPressed: pickImageCamera,
-              color: Colors.blue,
-              textColor: Colors.white,
-            ),
-            SizedBox(height: 10.0),
-            RaisedButton(
-              child: Text('SELECCIONAR DE GALERIA'),
-              onPressed: pickImageGallery,
-              color: Colors.blue,
-              textColor: Colors.white,
-            ),
-            SizedBox(height: 10.0),
-            RaisedButton(
-              child: Text('EXTRAER DATOS'),
-              onPressed: () {
-                extraerDatos(eleccion, context);
-              },
-              color: Colors.blue,
-              textColor: Colors.white,
-            ),
-            RaisedButton(
-              child: Text('ENVIAR'),
-              onPressed: enviar,
-              color: Colors.blue,
-              textColor: Colors.white,
-            )
-          ],
-        ),
+        children: <Widget>[
+          SizedBox(height: 100.0),
+          isImageLoaded
+              ? Center(
+                  child: Container(
+                      height: 200.0,
+                      width: 200.0,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: FileImage(pickedImage),
+                              fit: BoxFit.cover))),
+                )
+              : Container(),
+          SizedBox(height: 10.0),
+          RaisedButton(
+            child: Text('TOMAR FOTO'),
+            onPressed: pickImageCamera,
+            color: Colors.blue,
+            textColor: Colors.white,
+          ),
+          SizedBox(height: 10.0),
+          RaisedButton(
+            child: Text('SELECCIONAR DE GALERIA'),
+            onPressed: pickImageGallery,
+            color: Colors.blue,
+            textColor: Colors.white,
+          ),
+          SizedBox(height: 10.0),
+          RaisedButton(
+            child: Text('EXTRAER DATOS'),
+            onPressed: () {
+              extraerDatos(eleccion, context);
+            },
+            color: Colors.blue,
+            textColor: Colors.white,
+          ),
+          RaisedButton(
+            child: Text('ENVIAR'),
+            onPressed: () {
+              enviar(context);
+            },
+            color: Colors.blue,
+            textColor: Colors.white,
+          )
+        ],
+      ),
     );
 
     var l = new List<Widget>();
@@ -143,11 +145,11 @@ class _QrPageState extends State<QrPage> {
     return -1;
   }
 
-  showAlertDialog(BuildContext context) {
+  showAlertDialog(BuildContext context, String titulo, String mensaje) {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("UPS!"),
-      content: Text("No se pudo leer el QR.\nPor favor utilice otra foto."),
+      title: Text(titulo),
+      content: Text(mensaje),
     );
     // show the dialog
     showDialog(
@@ -224,16 +226,20 @@ class _QrPageState extends State<QrPage> {
           _bandera = false;
         });
       } else {
-        showAlertDialog(context);
+        showAlertDialog(context, "UPS!",
+            "No se pudo leer el QR.\nPor favor utilice otra foto.");
         setState(() {
           _bandera = false;
         });
       }
+    } else {
+      showAlertDialog(context, "Alerta!",
+            "No se a cargado ninguna imagen.");
     }
   }
 
-  enviar() async {
-    if (resultados.length > 0) {
+  enviar(BuildContext context) async {
+    if (resultados != null && resultados.length > 0) {
       setState(() {
         _bandera = true;
       });
@@ -244,13 +250,19 @@ class _QrPageState extends State<QrPage> {
           body: jsonEncode(respuesta),
           headers: {"Content-Type": "application/json"});
       if (resp.statusCode == 200) {
-        print('OK!');
+        showAlertDialog(
+            context, "OK!", "Resultados enviados de forma exitosa.");
       } else {
-        print(resp.statusCode);
+        showAlertDialog(context, "UPS!",
+            "No se pudo enviar los resultados, intente más tarde.");
       }
       setState(() {
         _bandera = false;
       });
+      resultados = new List();
+    } else {
+       showAlertDialog(context, "Alerta!",
+            "No existen resultados para enviar.");
     }
   }
 
