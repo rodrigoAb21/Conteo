@@ -22,6 +22,85 @@ class _QrPageState extends State<QrPage> {
   bool isImageLoaded = false;
   Respuesta respuesta;
   List<ResultadoParticipante> resultados;
+  // ------------------------------------------
+
+  bool _bandera = false;
+
+  List<Widget> _buildPage(BuildContext context, Eleccion eleccion) {
+    Center principal = new Center(
+      child: Column(
+          children: <Widget>[
+            SizedBox(height: 100.0),
+            isImageLoaded
+                ? Center(
+                    child: Container(
+                        height: 200.0,
+                        width: 200.0,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: FileImage(pickedImage),
+                                fit: BoxFit.cover))),
+                  )
+                : Container(),
+            SizedBox(height: 10.0),
+            RaisedButton(
+              child: Text('TOMAR FOTO'),
+              onPressed: pickImageCamera,
+              color: Colors.blue,
+              textColor: Colors.white,
+            ),
+            SizedBox(height: 10.0),
+            RaisedButton(
+              child: Text('SELECCIONAR DE GALERIA'),
+              onPressed: pickImageGallery,
+              color: Colors.blue,
+              textColor: Colors.white,
+            ),
+            SizedBox(height: 10.0),
+            RaisedButton(
+              child: Text('EXTRAER DATOS'),
+              onPressed: () {
+                extraerDatos(eleccion, context);
+              },
+              color: Colors.blue,
+              textColor: Colors.white,
+            ),
+            RaisedButton(
+              child: Text('ENVIAR'),
+              onPressed: enviar,
+              color: Colors.blue,
+              textColor: Colors.white,
+            )
+          ],
+        ),
+    );
+
+    var l = new List<Widget>();
+    l.add(principal);
+
+    if (_bandera) {
+      var modal = new Stack(
+        children: [
+          new Opacity(
+            opacity: 0.3,
+            child:
+                const ModalBarrier(dismissible: false, color: Colors.blueGrey),
+          ),
+          new Center(
+            child: new CircularProgressIndicator(
+              valueColor:
+                  new AlwaysStoppedAnimation<Color>(Colors.orangeAccent),
+            ),
+          ),
+        ],
+      );
+      l.add(modal);
+    }
+
+    return l;
+  }
+
+  // ------------------------------------------
 
   Future pickImageGallery() async {
     try {
@@ -84,6 +163,10 @@ class _QrPageState extends State<QrPage> {
       respuesta = new Respuesta();
       resultados = new List();
 
+      setState(() {
+        _bandera = true;
+      });
+
       // QR
       FirebaseVisionImage ourImage = FirebaseVisionImage.fromFile(pickedImage);
       BarcodeDetector barcodeDetector =
@@ -109,7 +192,7 @@ class _QrPageState extends State<QrPage> {
             print("----------LINEA------------");
             ResultadoParticipante resultado = new ResultadoParticipante();
             bool sw1, sw2 = false;
-            
+
             for (int i = 0; i < line.elements.length; i++) {
               // buscando participante
               if (i == 0) {
@@ -137,14 +220,23 @@ class _QrPageState extends State<QrPage> {
           }
         }
         print('Total de resultados encontrados: ${resultados.length}');
+        setState(() {
+          _bandera = false;
+        });
       } else {
         showAlertDialog(context);
+        setState(() {
+          _bandera = false;
+        });
       }
     }
   }
 
   enviar() async {
     if (resultados.length > 0) {
+      setState(() {
+        _bandera = true;
+      });
       respuesta.resultados = resultados;
       print(jsonEncode(respuesta));
 
@@ -156,6 +248,9 @@ class _QrPageState extends State<QrPage> {
       } else {
         print(resp.statusCode);
       }
+      setState(() {
+        _bandera = false;
+      });
     }
   }
 
@@ -167,50 +262,8 @@ class _QrPageState extends State<QrPage> {
         appBar: AppBar(
           backgroundColor: Colors.blue,
         ),
-        body: Column(
-          children: <Widget>[
-            SizedBox(height: 100.0),
-            isImageLoaded
-                ? Center(
-                    child: Container(
-                        height: 200.0,
-                        width: 200.0,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: FileImage(pickedImage),
-                                fit: BoxFit.cover))),
-                  )
-                : Container(),
-            SizedBox(height: 10.0),
-            RaisedButton(
-              child: Text('TOMAR FOTO'),
-              onPressed: pickImageCamera,
-              color: Colors.blue,
-              textColor: Colors.white,
-            ),
-            SizedBox(height: 10.0),
-            RaisedButton(
-              child: Text('SELECCIONAR DE GALERIA'),
-              onPressed: pickImageGallery,
-              color: Colors.blue,
-              textColor: Colors.white,
-            ),
-            SizedBox(height: 10.0),
-            RaisedButton(
-              child: Text('EXTRAER DATOS'),
-              onPressed: () {
-                extraerDatos(eleccion, context);
-              },
-              color: Colors.blue,
-              textColor: Colors.white,
-            ),
-            RaisedButton(
-              child: Text('ENVIAR'),
-              onPressed: enviar,
-              color: Colors.blue,
-              textColor: Colors.white,
-            )
-          ],
+        body: new Stack(
+          children: _buildPage(context, eleccion),
         ));
   }
 }

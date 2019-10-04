@@ -14,9 +14,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool _saving = false;
+  bool _bandera = false;
 
-  List<Widget> _buildForm(BuildContext context) {
+  List<Widget> _buildHome(BuildContext context) {
     Center principal = new Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     var l = new List<Widget>();
     l.add(principal);
 
-    if (_saving) {
+    if (_bandera) {
       var modal = new Stack(
         children: [
           new Opacity(
@@ -63,15 +63,14 @@ class _HomePageState extends State<HomePage> {
           title: Text("Principal"),
         ),
         body: new Stack(
-          children: _buildForm(context),
+          children: _buildHome(context),
         ));
   }
 
   void _submit(BuildContext context) async {
-    print('submit called...');
-
+    
     setState(() {
-      _saving = true;
+      _bandera = true;
     });
 
     final resp = await http.get('http://testsoft.nl/api/elecciones');
@@ -85,7 +84,7 @@ class _HomePageState extends State<HomePage> {
               convert.jsonDecode(convert.jsonEncode(item['participantes']))))));
 
       setState(() {
-        _saving = false;
+        _bandera = false;
       });
       Navigator.pushNamed(context, ListaEleccionesPage.routeName,
           arguments: lista);
