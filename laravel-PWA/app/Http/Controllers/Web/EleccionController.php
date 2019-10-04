@@ -99,7 +99,7 @@ class EleccionController extends Controller
         return redirect('admin/elecciones');
     }
 
-    
+
     public function verAsignacion($id)
     {
         $eleccion = Eleccion::findOrFail($id);
@@ -126,10 +126,12 @@ class EleccionController extends Controller
 
     public function asignar($id, Request $request)
     {
-        $participante = new ParticipanteEleccion();
-        $participante->eleccion_id = $id;
-        $participante->participante_id = $request['participante_id'];
-        $participante->save();
+        if ($request['participante_id'] != null) {
+            $participante = new ParticipanteEleccion();
+            $participante->eleccion_id = $id;
+            $participante->participante_id = $request['participante_id'];
+            $participante->save();
+        }
 
         return redirect('admin/elecciones/asignaciones/' . $id);
     }
