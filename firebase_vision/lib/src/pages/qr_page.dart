@@ -183,6 +183,10 @@ class _QrPageState extends State<QrPage> {
         }
       }
 
+      for (Participante p in eleccion.participantes) {
+        p.estado = true;
+      }
+
       if (respuesta.mesaId != null && respuesta.mesaId > 0) {
         // TEXTO
         TextRecognizer recognizeText = FirebaseVision.instance.textRecognizer();

@@ -32,6 +32,8 @@ class Funciones {
 
   static String limpiarPalabra(String palabra) {
     String nueva = '';
+    palabra = palabra.toUpperCase();
+    palabra = palabra.trim();
     for (var i = 0; i < palabra.length; i++) {
       if (palabra[i] != '.' && palabra[i] != '=') {
         nueva = nueva + palabra[i];
@@ -44,14 +46,19 @@ class Funciones {
     int id = -1;
     int i = 0;
     while (i < participantes.length) {
-      if (participantes[i].sigla.contains(palabra.trim())) {
-        return participantes[i].id;
-      } else if (buscarSimilitud(
-          limpiarPalabra(palabra), participantes[i].sigla)) {
-        return participantes[i].id;
-      } else if (buscarSimilitud2(
-          limpiarPalabra(palabra), participantes[i].sigla)) {
-        return participantes[i].id;
+      if (participantes[i].estado == true) {
+        if (participantes[i].sigla.contains(palabra.trim())) {
+          participantes[i].estado = false;
+          return participantes[i].id;
+        } else if (buscarSimilitud(
+            limpiarPalabra(palabra), participantes[i].sigla)) {
+          participantes[i].estado = false;
+          return participantes[i].id;
+        } else if (buscarSimilitud2(
+            limpiarPalabra(palabra), participantes[i].sigla)) {
+          participantes[i].estado = false;
+          return participantes[i].id;
+        }
       }
       i++;
     }
