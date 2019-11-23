@@ -14,6 +14,8 @@ import 'package:flutter_app_2/settings.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:square_in_app_payments/models.dart';
+import 'package:square_in_app_payments/in_app_payments.dart';
 
 void main() => runApp(MyApp());
 
@@ -37,6 +39,7 @@ class MainScreenState extends State<MainScreen> {
   bool isLoading = false;
   List<Choice> choices = const <Choice>[
     const Choice(title: 'Settings', icon: Icons.settings),
+    const Choice(title: 'Pago', icon: Icons.payment),
     const Choice(title: 'Log out', icon: Icons.exit_to_app),
   ];
 
@@ -45,6 +48,28 @@ class MainScreenState extends State<MainScreen> {
     super.initState();
     registerNotification();
     configLocalNotification();
+  }
+
+  void _pay() {
+    InAppPayments.setSquareApplicationId('sq0idp-1_A8L6qvc_I6zuYLxbHoLg');
+    InAppPayments.startCardEntryFlow(
+      onCardEntryCancel: _cardEntryCancel,
+      onCardNonceRequestSuccess: _cardNonceRequestSuccess, 
+    );
+  }
+
+  void _cardEntryCancel(){
+
+  }
+
+  void _cardNonceRequestSuccess(CardDetails result){
+    InAppPayments.completeCardEntry(
+      onCardEntryComplete: _cardEntryComplete,
+    );
+  }
+
+  void _cardEntryComplete(){
+
   }
 
   void registerNotification() {
@@ -80,6 +105,8 @@ class MainScreenState extends State<MainScreen> {
   void onItemMenuPress(Choice choice) {
     if (choice.title == 'Log out') {
       handleSignOut();
+    } else if (choice.title == 'Pago') {
+      _pay();
     } else {
       Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
     }
@@ -87,7 +114,7 @@ class MainScreenState extends State<MainScreen> {
 
   void showNotification(message) async {
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
-      Platform.isAndroid ? 'com.dfa.flutterchatdemo': 'com.duytq.flutterchatdemo',
+      Platform.isAndroid ? 'sw.uagrm.flutter_app_2': 'sw.uagrm.flutter_app_2',
       'Flutter chat demo',
       'your channel description',
       playSound: true,
