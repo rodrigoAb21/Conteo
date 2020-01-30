@@ -117,12 +117,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('provincia')->insert([
-            'nombre' => 'Jose Miguel de Velasco',
+            'nombre' => 'José Miguel de Velasco',
             'departamento_id' => 3
         ]);
 
         DB::table('provincia')->insert([
-            'nombre' => 'Manuel Maria Caballero',
+            'nombre' => 'Manuel María Caballero',
             'departamento_id' => 3
         ]);
 

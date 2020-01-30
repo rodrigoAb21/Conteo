@@ -1,9 +1,9 @@
 @if ($paginator->hasPages())
     <nav class="mr-0 ml-auto">
-        <ul class="pagination justify-content-end">
+        <ul class="pagination pagination-warning justify-content-end">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
-                <li class="page-item disabled"><span class="page-link">ANT</span></li>
+                <li class="page-item disabled"><span>ANT</span></li>
             @else
                 <li class="page-item"><a class="page-link" tabindex="-1" href="{{ $paginator->previousPageUrl() }}" rel="prev">ANT</a></li>
             @endif
@@ -31,7 +31,7 @@
             @if ($paginator->hasMorePages())
                 <li class="page-item"><a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next">SIG</a></li>
             @else
-                <li class="page-item disabled"><span class="page-link">SIG</span></li>
+                <li class="page-item disabled"><span>SIG</span></li>
             @endif
         </ul>
     </nav>

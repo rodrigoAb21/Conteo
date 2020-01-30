@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.index2')
 
 @section('contenido')
     <div class="row pt-3">
