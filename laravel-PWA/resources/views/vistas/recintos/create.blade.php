@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('contenido')
-    <div class="row pt-3">
+    <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -25,7 +25,7 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Localidad</label>
-                                    <select class="form-control" name="localidad_id">
+                                    <select class="form-control selectpicker" data-style="btn btn-link"  name="localidad_id">
                                         @foreach($localidades as $localidad)
                                             <option value="{{$localidad->id}}">{{$localidad->nombre}} - {{$localidad->provincia->nombre}} - {{$localidad->provincia->departamento->nombre}}</option>
                                         @endforeach
@@ -37,12 +37,12 @@
                                     <label>Direccion</label>
                                     <textarea required
                                               class="form-control"
-                                              name="direccion" 
+                                              name="direccion"
                                               rows="3">{{old('nombre')}}</textarea>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-info">Guardar</button>
+                        <button type="submit" class="btn btn-info btn-sm">Guardar</button>
                     </form>
                 </div>
             </div>

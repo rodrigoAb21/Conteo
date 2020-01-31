@@ -2,7 +2,7 @@
 
 @section('contenido')
     <div class="container">
-        <div class="row pt-3">
+        <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
@@ -34,19 +34,18 @@
                         </div>
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-hover table-bordered color-table info-table">
+                            <table class="table table-hover table-striped">
                                 <thead>
                                 <tr>
-                                    <th class="text-center">POSICION</th>
-                                    <th class="text-center">SIGLA</th>
-                                    <th class="text-center">COLOR</th>
-                                    <th class="text-center">TOTAL</th>
+                                    <th class="text-center"><b>POSICION</b></th>
+                                    <th class="text-center"><b>SIGLA</b></th>
+                                    <th class="text-center"><b>COLOR</b></th>
+                                    <th class="text-center"><b>TOTAL</b></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($resultados as $resultado)
                                     <tr>
-
                                         <td class="text-center">{{$loop->iteration}}</td>
                                         <td class="text-center">{{$resultado->sigla}}</td>
                                         <td style="background: {{$resultado->color}};"></td>
@@ -60,12 +59,13 @@
                             <div class="card-body">
                                 <h3 class="pb-2">Departamentos</h3>
                                 <div class="table-responsive">
-                                    <table class="table table-hover table-bordered color-table info-table">
+                                    <table class="table table-hover table-striped">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">ID</th>
-                                            <th class="text-center">NOMBRE</th>
-                                            <th class="text-center">OPCIONES</th>
+                                            <th class="text-center"><b>ID</b></th>
+                                            <th class="text-center"><b>NOMBRE</b></th>
+                                            <th class="text-center"><b>OPCIONES</b></th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -75,7 +75,7 @@
                                                 <td class="text-center">{{$departamento->nombre}}</td>
                                                 <td class="text-center ">
                                                     <a href="{{url('admin/elecciones/resultados/'.$eleccion->id.'/'.$departamento->id)}}">
-                                                        <button class="btn btn-info">
+                                                        <button class="btn btn-info btn-sm">
                                                             Ver resultados
                                                         </button>
                                                     </a>
@@ -90,7 +90,7 @@
                         </div>
                         <br>
                         <a href="{{url('admin/elecciones')}}">
-                            <button class="btn btn-danger">
+                            <button class="btn btn-danger btn-sm">
                                  Atras
                             </button>
                         </a>

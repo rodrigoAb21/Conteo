@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('contenido')
-    <div class="row pt-3">
+    <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -13,7 +13,7 @@
                         {{csrf_field()}}
                         {{method_field('PATCH')}}
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Nombre</label>
                                     <input required
@@ -23,7 +23,7 @@
                                            name="nombre">
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Fecha</label>
                                     <input required
@@ -33,7 +33,7 @@
                                            name="fecha">
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Nro Mesas</label>
                                     <input required
@@ -46,10 +46,10 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Estado</label>
-                                    <select class="form-control" name="estado">
+                                    <select class="form-control selectpicker" data-style="btn btn-link"  name="estado">
                                         @foreach($estados as $estado)
                                             @if($estado == $eleccion->estado)
                                                 <option selected value="{{$estado}}">{{$estado}}</option>
@@ -60,10 +60,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>Tipo</label>
-                                    <select class="form-control" name="tipo">
+                                    <select class="form-control selectpicker" data-style="btn btn-link"  name="tipo">
                                         @foreach($tipos as $tipo)
                                             @if($tipo == $eleccion->tipo)
                                                 <option selected value="{{$tipo}}">{{$tipo}}</option>
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-info">Guardar</button>
+                        <button type="submit" class="btn btn-info btn-sm">Guardar</button>
                     </form>
                 </div>
             </div>

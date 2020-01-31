@@ -18,12 +18,12 @@
 
 <body class="">
 <div class="wrapper ">
-    <div class="sidebar" data-color="orange" data-background-color="white" data-image="{{asset('material/img/sidebar-1.jpg')}}">
+    <div class="sidebar" data-color="orange" data-background-color="black" data-image="{{asset('material/img/sidebar-1.jpg')}}">
         <div class="logo">
             <a href="" class="simple-text logo-mini">
             </a>
-            <a href="" class="simple-text logo-normal">
-                <img style="height: 65px" src="{{asset('material/img/inegas-logo.png')}}"/>
+            <a href="{{url('/admin')}}" class="simple-text logo-normal">
+                <img style="height: 65px; width: 120px" src="{{asset('material/img/inegas-logo.png')}}"/>
             </a>
         </div>
         <div class="sidebar-wrapper">
@@ -177,6 +177,7 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{{asset('material/js/material-dashboard.minf066.js?v=2.1.0')}}" type="text/javascript"></script>
 <script src="{{asset('material/js/validador.js')}}" type="text/javascript"></script>
+<script src="{{asset('plantilla/assets/plugins/Chart.js/Chart.min.js')}}"></script>
 @stack('scripts')
 </body>
 </html>
