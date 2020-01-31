@@ -1,7 +1,7 @@
-@extends('layouts.index2')
+@extends('layouts.index')
 
 @section('contenido')
-    <div class="row pt-3">
+    <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-info">Guardar</button>
+                        <button type="submit" class="btn btn-info btn-sm">Guardar</button>
                     </form>
                 </div>
             </div>

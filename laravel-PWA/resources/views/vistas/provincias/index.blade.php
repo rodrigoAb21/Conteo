@@ -1,25 +1,29 @@
 @extends('layouts.index')
 
 @section('contenido')
-    <div class="row pt-3">
+    <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                    <h3 class="pb-2">Provincias
+                <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <i class="fa fa-route fa-2x"></i>
+                    </div>
+                    <h3 class="card-title">Provincias
                         <div class="float-right">
-                            <a class="btn btn-success" href="{{url('admin/provincias/create')}}">
-                                <i class="fa fa-plus"></i> Nueva
+                            <a class="btn btn-info btn-sm" href="{{url('admin/provincias/create')}}">
+                                <i class="fa fa-plus"></i>
                             </a>
-                        </div>
-                    </h3>
+                        </div></h3>
+                </div>
+                <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-bordered color-table info-table">
+                        <table class="table table-hover table-striped">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>NOMBRE</th>
-                                <th>DEPARTAMENTO</th>
-                                <th>OPCIONES</th>
+                                <th><b>ID</b></th>
+                                <th><b>NOMBRE</b></th>
+                                <th><b>DEPARTAMENTO</b></th>
+                                <th class="text-right "><b>OPCIONES</b></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -30,11 +34,11 @@
                                     <td>{{$provincia->departamento->nombre}}</td>
                                     <td class="text-right ">
                                         <a href="{{url('admin/provincias/'.$provincia->id.'/edit')}}">
-                                            <button class="btn btn-warning">
+                                            <button class="btn btn-warning btn-sm">
                                                 <i class="fa fa-pen"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-danger" onclick="modalEliminar('{{$provincia -> nombre}}', '{{url('admin/provincias/'.$provincia -> id)}}')">
+                                        <button type="button" class="btn btn-danger btn-sm" onclick="modalEliminar('{{$provincia -> nombre}}', '{{url('admin/provincias/'.$provincia -> id)}}')">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

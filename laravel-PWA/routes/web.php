@@ -28,10 +28,6 @@ Route::get('admin', function () {
     return view('home');
 })->middleware('auth');
 
-Route::get('admin2', function () {
-    return view('layouts.index2');
-})->middleware('auth');
-
 Route::middleware('auth')->group(function () {
     Route::resource('admin/elecciones', 'Web\EleccionController');
 
