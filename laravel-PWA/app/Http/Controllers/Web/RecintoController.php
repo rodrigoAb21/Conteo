@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Localidad;
+use App\Municipio;
 use App\Recinto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -21,7 +21,7 @@ class RecintoController extends Controller
     {
         return view('vistas.recintos.create',
             [
-                'localidades' => Localidad::all(),
+                'localidades' => Municipio::all(),
             ]);
     }
 
@@ -42,7 +42,7 @@ class RecintoController extends Controller
         return view('vistas.recintos.edit',
             [
                 'recinto' => Recinto::findOrFail($id),
-                'localidades' => Localidad::all(),
+                'localidades' => Municipio::all(),
             ]);
     }
 

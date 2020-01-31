@@ -12,11 +12,11 @@ class Recinto extends Model
     protected $fillable = [
         'nombre',
         'direccion',
-        'localidad_id',
+        'municipio_id',
     ];
 
-    public function localidad()
+    public function municipio()
     {
-        return $this->belongsTo('App\Localidad');
+        return $this->belongsTo('App\Municipio');
     }
 }

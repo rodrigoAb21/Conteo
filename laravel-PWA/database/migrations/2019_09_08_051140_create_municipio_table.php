@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepartamentoTable extends Migration
+class CreateMunicipioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateDepartamentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('departamento', function (Blueprint $table) {
+        Schema::create('municipio', function (Blueprint $table) {
             $table->increments('id');
             $table->text('nombre');
+            $table->unsignedInteger('provincia_id');
+            $table->foreign('provincia_id')->references('id')->on('provincia')->onDelete('cascade');
         });
     }
 
@@ -26,6 +28,6 @@ class CreateDepartamentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departamento');
+        Schema::dropIfExists('municipio');
     }
 }

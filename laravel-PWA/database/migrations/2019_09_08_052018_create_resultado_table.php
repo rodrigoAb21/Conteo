@@ -15,10 +15,10 @@ class CreateResultadoTable extends Migration
     {
         Schema::create('resultado', function (Blueprint $table) {
             $table->integer('total');
-            $table->unsignedInteger('participante_eleccion_id');
+            $table->unsignedInteger('partido_eleccion_id');
             $table->unsignedInteger('mesa_id');
-            $table->primary(array('participante_eleccion_id', 'mesa_id'));
-            $table->foreign('participante_eleccion_id')->references('id')->on('participante_eleccion')->onDelete('cascade');
+            $table->primary(array('partido_eleccion_id', 'mesa_id'));
+            $table->foreign('partido_eleccion_id')->references('id')->on('partido_eleccion')->onDelete('cascade');
             $table->foreign('mesa_id')->references('id')->on('mesa')->onDelete('cascade');
         });
     }

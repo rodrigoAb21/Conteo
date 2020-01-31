@@ -19,10 +19,7 @@ class DepartamentoController extends Controller
 
     public function create()
     {
-        return view('vistas.departamentos.create',
-            [
-                'paises' => Pais::all(),
-            ]);
+        return view('vistas.departamentos.create');
     }
 
 
@@ -30,7 +27,6 @@ class DepartamentoController extends Controller
     {
         $departamento = new Departamento();
         $departamento->nombre = $request['nombre'];
-        $departamento->pais_id = $request['pais_id'];
         $departamento->save();
 
         return redirect('admin/departamentos');
@@ -41,7 +37,6 @@ class DepartamentoController extends Controller
         return view('vistas.departamentos.edit',
             [
                 'departamento' => Departamento::findOrFail($id),
-                'paises' => Pais::all(),
             ]);
     }
 
@@ -50,7 +45,6 @@ class DepartamentoController extends Controller
     {
         $departamento = Departamento::findOrFail($id);
         $departamento->nombre = $request['nombre'];
-        $departamento->pais_id = $request['pais_id'];
         $departamento->update();
 
         return redirect('admin/departamentos');

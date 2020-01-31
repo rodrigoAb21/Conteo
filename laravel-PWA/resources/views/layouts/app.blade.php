@@ -11,7 +11,7 @@
     <title>Elecciones</title>
 
     <!-- Styles -->
-    <link href="{{asset('plantilla/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('js/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     @laravelPWA
 </head>
 <body>
@@ -20,12 +20,12 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{asset('plantilla/assets/plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('js/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{asset('plantilla/assets/plugins/bootstrap/js/popper.min.js')}}"></script>
-    <script src="{{asset('plantilla/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap/js/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap/js/bootstrap.min.js')}}"></script>
 
-    <script src="{{asset('plantilla/assets/plugins/Chart.js/Chart.min.js')}}"></script>
+    <script src="{{asset('js/Chart.js/Chart.min.js')}}"></script>
     @stack('scripts')
 </body>
 </html>

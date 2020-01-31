@@ -37,16 +37,10 @@
                         <p> Elecciones</p>
                     </a>
                 </li>
-                <li class="{{ Request::is('admin/participantes*') ? 'nav-item active' : 'nav-item' }}">
-                    <a class="nav-link" href="{{url('admin/participantes')}}" >
+                <li class="{{ Request::is('admin/partidos*') ? 'nav-item active' : 'nav-item' }}">
+                    <a class="nav-link" href="{{url('admin/partidos')}}" >
                         <i class="fa fa-users"></i>
-                        <p> Participantes</p>
-                    </a>
-                </li>
-                <li class="{{ Request::is('admin/paises*') ? 'nav-item active' : 'nav-item' }}">
-                    <a class="nav-link" href="{{url('admin/paises')}}" >
-                        <i class="fa fa-globe-americas"></i>
-                        <p> Paises</p>
+                        <p> Partidos</p>
                     </a>
                 </li>
                 <li class="{{ Request::is('admin/departamentos*') ? 'nav-item active' : 'nav-item' }}">
@@ -61,10 +55,10 @@
                         <p> Provincias</p>
                     </a>
                 </li>
-                <li class="{{ Request::is('admin/localidades*') ? 'nav-item active' : 'nav-item' }}">
-                    <a class="nav-link" href="{{url('admin/localidades')}}" >
+                <li class="{{ Request::is('admin/municipios*') ? 'nav-item active' : 'nav-item' }}">
+                    <a class="nav-link" href="{{url('admin/municipios')}}" >
                         <i class="fa fa-map-signs"></i>
-                        <p> Localidades</p>
+                        <p> Municipios</p>
                     </a>
                 </li>
                 <li class="{{ Request::is('admin/recintos*') ? 'nav-item active' : 'nav-item' }}">
@@ -177,7 +171,7 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{{asset('material/js/material-dashboard.minf066.js?v=2.1.0')}}" type="text/javascript"></script>
 <script src="{{asset('material/js/validador.js')}}" type="text/javascript"></script>
-<script src="{{asset('plantilla/assets/plugins/Chart.js/Chart.min.js')}}"></script>
+<script src="{{asset('js/Chart.js/Chart.min.js')}}"></script>
 @stack('scripts')
 </body>
 </html>

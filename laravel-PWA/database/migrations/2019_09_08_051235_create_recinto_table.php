@@ -17,8 +17,8 @@ class CreateRecintoTable extends Migration
             $table->increments('id');
             $table->text('nombre');
             $table->text('direccion');
-            $table->unsignedInteger('localidad_id');
-            $table->foreign('localidad_id')->references('id')->on('localidad')->onDelete('cascade');
+            $table->unsignedInteger('municipio_id');
+            $table->foreign('municipio_id')->references('id')->on('municipio')->onDelete('cascade');
         });
     }
 

@@ -19,55 +19,50 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('rodrigo'),
         ]);
 
-        // Poblando Pais
-        DB::table('pais')->insert([
-            'nombre' => 'Bolivia',
-        ]);
-
-        // Poblando Pais
+        // Poblando Departamentos
         DB::table('departamento')->insert([
             'nombre' => 'Pando',
-            'pais_id' => 1
+
         ]);
 
         DB::table('departamento')->insert([
             'nombre' => 'Beni',
-            'pais_id' => 1
+
         ]);
 
         DB::table('departamento')->insert([
             'nombre' => 'Santa Cruz',
-            'pais_id' => 1
+
         ]);
 
         DB::table('departamento')->insert([
             'nombre' => 'Cochabamba',
-            'pais_id' => 1
+
         ]);
 
         DB::table('departamento')->insert([
             'nombre' => 'Chuquisaca',
-            'pais_id' => 1
+
         ]);
 
         DB::table('departamento')->insert([
             'nombre' => 'Tarija',
-            'pais_id' => 1
+
         ]);
 
         DB::table('departamento')->insert([
             'nombre' => 'La Paz',
-            'pais_id' => 1
+
         ]);
 
         DB::table('departamento')->insert([
             'nombre' => 'Oruro',
-            'pais_id' => 1
+
         ]);
 
         DB::table('departamento')->insert([
             'nombre' => 'Potosi',
-            'pais_id' => 1
+
         ]);
 
         // Poblando Provincias
@@ -146,39 +141,39 @@ class DatabaseSeeder extends Seeder
             'departamento_id' => 3
         ]);
 
-        // Poblando Localidades
+        // Poblando Municipios
 
-        DB::table('localidad')->insert([
+        DB::table('municipio')->insert([
             'nombre' => 'Santa Cruz de la Sierra',
             'provincia_id' => 1
         ]);
 
-        DB::table('localidad')->insert([
+        DB::table('municipio')->insert([
             'nombre' => 'Cotoca',
             'provincia_id' => 1
         ]);
 
-        DB::table('localidad')->insert([
+        DB::table('municipio')->insert([
             'nombre' => 'Porongo',
             'provincia_id' => 1
         ]);
 
-        DB::table('localidad')->insert([
+        DB::table('municipio')->insert([
             'nombre' => 'La Guardia',
             'provincia_id' => 1
         ]);
 
-        DB::table('localidad')->insert([
+        DB::table('municipio')->insert([
             'nombre' => 'El Torno',
             'provincia_id' => 1
         ]);
 
-        DB::table('localidad')->insert([
+        DB::table('municipio')->insert([
             'nombre' => 'El Carmen',
             'provincia_id' => 1
         ]);
 
-        DB::table('localidad')->insert([
+        DB::table('municipio')->insert([
             'nombre' => 'Puerto Pailas',
             'provincia_id' => 1
         ]);
@@ -189,43 +184,43 @@ class DatabaseSeeder extends Seeder
         DB::table('recinto')->insert([
             'nombre' => 'Col. Hnos Cavanis',
             'direccion' => 'Radial 17 1/2 entre 5to y 6to anillo.',
-            'localidad_id' => 1
+            'municipio_id' => 1
         ]);
 
         DB::table('recinto')->insert([
             'nombre' => 'Col. Henry Prince',
             'direccion' => 'Doble via la guardia 4to anillo.',
-            'localidad_id' => 1
+            'municipio_id' => 1
         ]);
 
         DB::table('recinto')->insert([
             'nombre' => 'Col. Aleman',
             'direccion' => 'Av. San Martín entre 2do y 3er anillo.',
-            'localidad_id' => 1
+            'municipio_id' => 1
         ]);
 
         DB::table('recinto')->insert([
             'nombre' => 'Col. Japones',
             'direccion' => 'Av. German Busch entre 2do y 3er anillo.',
-            'localidad_id' => 1
+            'municipio_id' => 1
         ]);
 
         DB::table('recinto')->insert([
             'nombre' => 'Col. Frances',
             'direccion' => '4to anillo y Roca y Conornado',
-            'localidad_id' => 1
+            'municipio_id' => 1
         ]);
 
         DB::table('recinto')->insert([
             'nombre' => 'Col. Caritas',
             'direccion' => 'Av. Santos Dummont 5to anillo.',
-            'localidad_id' => 1
+            'municipio_id' => 1
         ]);
 
         DB::table('recinto')->insert([
             'nombre' => 'Col. San George',
             'direccion' => 'Av. Alemana y 4to anillo.',
-            'localidad_id' => 1
+            'municipio_id' => 1
         ]);
 
 
@@ -241,67 +236,67 @@ class DatabaseSeeder extends Seeder
         }
 
         //Poblando Participantes
-        DB::table('participante')->insert([
+        DB::table('partido')->insert([
             'nombre' => 'BLANCO',
             'sigla' => 'BLANCO',
             'color' => '#ffffff',
         ]);
 
-        DB::table('participante')->insert([
+        DB::table('partido')->insert([
             'nombre' => 'NULO',
             'sigla' => 'NULO',
             'color' => '#b0aeae',
         ]);
 
-        DB::table('participante')->insert([
+        DB::table('partido')->insert([
             'nombre' => 'BOLIVIA DICE NO',
             'sigla' => '21F',
             'color' => '#a40000',
         ]);
 
-        DB::table('participante')->insert([
+        DB::table('partido')->insert([
             'nombre' => 'COMUNIDAD CIUDADANA',
             'sigla' => 'CC',
             'color' => '#ff8000',
         ]);
 
-        DB::table('participante')->insert([
+        DB::table('partido')->insert([
             'nombre' => 'FRENTE PARA LA VICTORIA',
             'sigla' => 'FPV',
             'color' => '#004040',
         ]);
 
-        DB::table('participante')->insert([
+        DB::table('partido')->insert([
             'nombre' => 'MOVIMIENTO AL SOCIALISMO - INSTRUMENTO POLÍTICO POR LA SOBERANÍA DE LOS PUEBLOS',
             'sigla' => 'MAS-IPSP',
             'color' => '#003887',
         ]);
 
-        DB::table('participante')->insert([
+        DB::table('partido')->insert([
             'nombre' => 'MOVIMIENTO NACIONALISTA REVOLUCIONARIO',
             'sigla' => 'MNR',
             'color' => '#ff80c0',
         ]);
 
-        DB::table('participante')->insert([
+        DB::table('partido')->insert([
             'nombre' => 'MOVIMIENTO TERCER SISTEMA',
             'sigla' => 'MTS',
             'color' => '#006f37',
         ]);
 
-        DB::table('participante')->insert([
+        DB::table('partido')->insert([
             'nombre' => 'PARTIDO DE ACCIÓN NACIONAL BOLIVIANO',
             'sigla' => 'PAN-BOL',
             'color' => '#ff2828',
         ]);
 
-        DB::table('participante')->insert([
+        DB::table('partido')->insert([
             'nombre' => 'PARTIDO DEMÓCRATA CRISTIANO',
             'sigla' => 'PDC',
             'color' => '#326363',
         ]);
 
-        DB::table('participante')->insert([
+        DB::table('partido')->insert([
             'nombre' => 'UNIDAD CÍVICA SOLIDARIDAD',
             'sigla' => 'UCS',
             'color' => '#039efc',
@@ -330,8 +325,8 @@ class DatabaseSeeder extends Seeder
         // Poblando Participante_Eleccion
         for ($j = 1; $j <= 2; $j++) {
             for ($i = 1; $i <= 11; $i++) {
-                DB::table('participante_eleccion')->insert([
-                    'participante_id' => $i,
+                DB::table('partido_eleccion')->insert([
+                    'partido_id' => $i,
                     'eleccion_id' => $j,
                 ]);
             }
@@ -344,67 +339,67 @@ class DatabaseSeeder extends Seeder
             DB::table('resultado')->insert([
                 'total' => rand(0,10),
                 'mesa_id' => $i,
-                'participante_eleccion_id' => 1,
+                'partido_eleccion_id' => 1,
             ]);
 
             DB::table('resultado')->insert([
                 'total' => rand(0,10),
                 'mesa_id' => $i,
-                'participante_eleccion_id' => 2,
+                'partido_eleccion_id' => 2,
             ]);
 
             DB::table('resultado')->insert([
                 'total' => rand(0,20),
                 'mesa_id' => $i,
-                'participante_eleccion_id' => 3,
+                'partido_eleccion_id' => 3,
             ]);
 
             DB::table('resultado')->insert([
                 'total' => rand(0,20),
                 'mesa_id' => $i,
-                'participante_eleccion_id' => 4,
+                'partido_eleccion_id' => 4,
             ]);
 
             DB::table('resultado')->insert([
                 'total' => rand(0,20),
                 'mesa_id' => $i,
-                'participante_eleccion_id' => 5,
+                'partido_eleccion_id' => 5,
             ]);
 
             DB::table('resultado')->insert([
                 'total' => rand(0,10),
                 'mesa_id' => $i,
-                'participante_eleccion_id' => 6,
+                'partido_eleccion_id' => 6,
             ]);
 
             DB::table('resultado')->insert([
                 'total' => rand(0,20),
                 'mesa_id' => $i,
-                'participante_eleccion_id' => 7,
+                'partido_eleccion_id' => 7,
             ]);
 
             DB::table('resultado')->insert([
                 'total' => rand(0,20),
                 'mesa_id' => $i,
-                'participante_eleccion_id' => 8,
+                'partido_eleccion_id' => 8,
             ]);
 
             DB::table('resultado')->insert([
                 'total' => rand(0,20),
                 'mesa_id' => $i,
-                'participante_eleccion_id' => 9,
+                'partido_eleccion_id' => 9,
             ]);
 
             DB::table('resultado')->insert([
                 'total' => rand(0,20),
                 'mesa_id' => $i,
-                'participante_eleccion_id' => 10,
+                'partido_eleccion_id' => 10,
             ]);
 
             DB::table('resultado')->insert([
                 'total' => rand(0,20),
                 'mesa_id' => $i,
-                'participante_eleccion_id' => 11,
+                'partido_eleccion_id' => 11,
             ]);
         }
 
