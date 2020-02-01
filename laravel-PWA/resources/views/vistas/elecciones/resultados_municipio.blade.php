@@ -37,9 +37,9 @@
                         <table class="table table-hover table-striped">
                             <thead>
                             <tr>
-                                <th class="text-center"><b>POSICION</b></th>
                                 <th class="text-center"><b>SIGLA</b></th>
                                 <th class="text-center"><b>COLOR</b></th>
+                                <th class="text-center"><b>PORCENTAJE</b></th>
                                 <th class="text-center"><b>TOTAL</b></th>
                             </tr>
                             </thead>
@@ -50,6 +50,7 @@
                                 <td class="text-center">{{$loop->iteration}}</td>
                                 <td class="text-center">{{$resultado->sigla}}</td>
                                 <td style="background: {{$resultado->color}};"></td>
+                                <td class="text-center">{{round(($resultado->total*100)/$total,2)}} %</td>
                                 <td class="text-center">{{$resultado->total}}</td>
                             </tr>
                             @endforeach
@@ -63,9 +64,9 @@
                                 <table class="table table-hover table-striped">
                                     <thead>
                                     <tr>
-                                        <th class="text-center"><b>ID</b></th>
+
                                         <th class="text-center"><b>NOMBRE</b></th>
-                                        <th class="text-center"><b>OPCIONES</b></th>
+
 
                                     </tr>
                                     </thead>

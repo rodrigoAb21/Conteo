@@ -8,7 +8,6 @@
                     <div class="card-body">
                         <h3 class="pb-2">"{{$eleccion->nombre}}" - {{$departamento->nombre}}</h3>
                         <div class="row">
-
                             <div class="col-lg-6">
                                 <div class="card">
                                     <div class="card-body">
@@ -37,9 +36,9 @@
                             <table class="table table-hover table-striped">
                                 <thead>
                                 <tr>
-                                    <th class="text-center"><b>POSICION</b></th>
                                     <th class="text-center"><b>SIGLA</b></th>
                                     <th class="text-center"><b>COLOR</b></th>
+                                    <th class="text-center"><b>PORCENTAJE</b></th>
                                     <th class="text-center"><b>TOTAL</b></th>
                                 </tr>
                                 </thead>
@@ -47,9 +46,9 @@
                                 @foreach($resultados as $resultado)
                                     <tr>
 
-                                        <td class="text-center">{{$loop->iteration}}</td>
                                         <td class="text-center">{{$resultado->sigla}}</td>
                                         <td style="background: {{$resultado->color}};"></td>
+                                        <td class="text-center">{{round(($resultado->total*100)/$total,2)}} %</td>
                                         <td class="text-center">{{$resultado->total}}</td>
                                     </tr>
                                 @endforeach
@@ -60,12 +59,12 @@
                             <div class="card-body">
                                 <h3 class="pb-2">Provincias</h3>
                                 <div class="table-responsive">
-                                    <table class="table table-hover table-bordered color-table info-table">
+                                    <table class="table table-hover table-striped">
                                         <thead>
                                         <tr>
-                                            <th class="text-center"><b>ID</b></th>
+
                                             <th class="text-center"><b>NOMBRE</b></th>
-                                            <th class="text-center"><b>OPCIONES</b></th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
