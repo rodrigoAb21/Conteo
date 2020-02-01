@@ -23,20 +23,6 @@
                                            name="nombre">
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>Pais</label>
-                                    <select class="form-control selectpicker" data-style="btn btn-link" name="pais_id">
-                                        @foreach($paises as $pais)
-                                            @if($pais->id == $departamento->pais_id)
-                                                <option selected value="{{$pais->id}}">{{$pais->nombre}}</option>
-                                            @else
-                                                <option value="{{$pais->id}}">{{$pais->nombre}}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-info btn-sm">Guardar</button>

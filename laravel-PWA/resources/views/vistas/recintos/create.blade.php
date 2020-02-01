@@ -24,10 +24,10 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Localidad</label>
-                                    <select class="form-control selectpicker" data-style="btn btn-link"  name="localidad_id">
-                                        @foreach($localidades as $localidad)
-                                            <option value="{{$localidad->id}}">{{$localidad->nombre}} - {{$localidad->provincia->nombre}} - {{$localidad->provincia->departamento->nombre}}</option>
+                                    <label>Municipio</label>
+                                    <select class="form-control selectpicker" data-style="btn btn-link"  name="municipio_id">
+                                        @foreach($municipios as $municipio)
+                                            <option value="{{$municipio->id}}">{{$municipio->nombre}} - {{$municipio->provincia->nombre}} - {{$municipio->provincia->departamento->nombre}}</option>
                                         @endforeach
                                     </select>
                                 </div>

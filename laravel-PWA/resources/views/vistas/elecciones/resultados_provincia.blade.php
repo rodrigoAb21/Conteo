@@ -69,12 +69,12 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($localidades as $localidad)
+                                        @foreach($municipios as $municipio)
                                             <tr>
-                                                <td class="text-center">{{$localidad->id}}</td>
-                                                <td class="text-center">{{$localidad->nombre}}</td>
+                                                <td class="text-center">{{$municipio->id}}</td>
+                                                <td class="text-center">{{$municipio->nombre}}</td>
                                                 <td class="text-center ">
-                                                    <a href="{{url("admin/elecciones/resultados/$eleccion->id/$departamento->id/$provincia->id/$localidad->id")}}">
+                                                    <a href="{{url("admin/elecciones/resultados/$eleccion->id/$departamento->id/$provincia->id/$municipio->id")}}">
                                                         <button class="btn btn-info">
                                                             Ver resultados
                                                         </button>
@@ -84,7 +84,7 @@
                                         @endforeach
                                         </tbody>
                                     </table>
-                                    {{$localidades->links('pagination.default')}}
+                                    {{$municipios->links('pagination.default')}}
                                 </div>
                             </div>
                         </div>

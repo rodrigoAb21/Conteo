@@ -28,10 +28,10 @@ class MunicipioController extends Controller
 
     public function store(Request $request)
     {
-        $localidad = new Municipio();
-        $localidad->nombre = $request['nombre'];
-        $localidad->provincia_id = $request['provincia_id'];
-        $localidad->save();
+        $municipio = new Municipio();
+        $municipio->nombre = $request['nombre'];
+        $municipio->provincia_id = $request['provincia_id'];
+        $municipio->save();
 
         return redirect('admin/municipios');
     }
@@ -40,7 +40,7 @@ class MunicipioController extends Controller
     {
         return view('vistas.municipios.edit',
             [
-                'localidad' => Municipio::findOrFail($id),
+                'municipio' => Municipio::findOrFail($id),
                 'provincias' => Provincia::all(),
             ]);
     }
@@ -48,10 +48,10 @@ class MunicipioController extends Controller
 
     public function update(Request $request, $id)
     {
-        $localidad = Municipio::findOrFail($id);
-        $localidad->nombre = $request['nombre'];
-        $localidad->provincia_id = $request['provincia_id'];
-        $localidad->update();
+        $municipio = Municipio::findOrFail($id);
+        $municipio->nombre = $request['nombre'];
+        $municipio->provincia_id = $request['provincia_id'];
+        $municipio->update();
 
         return redirect('admin/municipios');
     }
@@ -59,8 +59,8 @@ class MunicipioController extends Controller
 
     public function destroy($id)
     {
-        $localidad = Municipio::findOrFail($id);
-        $localidad->delete();
+        $municipio = Municipio::findOrFail($id);
+        $municipio->delete();
 
         return redirect('admin/municipios');
     }

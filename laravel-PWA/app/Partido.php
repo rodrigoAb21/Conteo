@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Partido extends Model
 {
-    protected $table = 'participante';
+    protected $table = 'partido';
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [

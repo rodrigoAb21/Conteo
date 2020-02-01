@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <select class="form-control selectpicker" data-style="btn btn-link" name="participante_id">
+                                    <select class="form-control selectpicker" data-style="btn btn-link" name="partido_id">
                                         @foreach($opciones as $opcion)
                                             <option value="{{$opcion->id}}">
                                                 {{$opcion->sigla}}
@@ -41,13 +41,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($participantes as $participante)
+                            @foreach($partidos as $partido)
                                 <tr>
                                     <td>{{$loop -> iteration}}</td>
-                                    <td>{{$participante -> sigla}}</td>
-                                    <td style="background: {{$participante -> color}};"></td>
+                                    <td>{{$partido -> sigla}}</td>
+                                    <td style="background: {{$partido -> color}};"></td>
                                     <td class="text-right ">
-                                        <a href="{{url("admin/elecciones/asignaciones/$eleccion->id/$participante->id/quitar")}}">
+                                        <a href="{{url("admin/elecciones/asignaciones/$eleccion->id/$partido->id/quitar")}}">
                                             <button class="btn btn-danger btn-sm">
                                                 <i class="fa fa-times"></i>
                                             </button>

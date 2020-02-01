@@ -21,7 +21,7 @@ class RecintoController extends Controller
     {
         return view('vistas.recintos.create',
             [
-                'localidades' => Municipio::all(),
+                'municipios' => Municipio::all(),
             ]);
     }
 
@@ -31,7 +31,7 @@ class RecintoController extends Controller
         $recinto = new Recinto();
         $recinto->nombre = $request['nombre'];
         $recinto->direccion = $request['direccion'];
-        $recinto->localidad_id = $request['localidad_id'];
+        $recinto->municipio_id = $request['municipio_id'];
         $recinto->save();
 
         return redirect('admin/recintos');
@@ -42,7 +42,7 @@ class RecintoController extends Controller
         return view('vistas.recintos.edit',
             [
                 'recinto' => Recinto::findOrFail($id),
-                'localidades' => Municipio::all(),
+                'municipios' => Municipio::all(),
             ]);
     }
 
@@ -52,7 +52,7 @@ class RecintoController extends Controller
         $recinto = Recinto::findOrFail($id);
         $recinto->nombre = $request['nombre'];
         $recinto->direccion = $request['direccion'];
-        $recinto->localidad_id = $request['localidad_id'];
+        $recinto->municipio_id = $request['municipio_id'];
         $recinto->update();
 
         return redirect('admin/recintos');

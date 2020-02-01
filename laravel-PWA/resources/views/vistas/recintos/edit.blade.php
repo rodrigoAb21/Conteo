@@ -25,13 +25,13 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Localidad</label>
-                                    <select class="form-control selectpicker" data-style="btn btn-link"  name="localidad_id">
-                                        @foreach($localidades as $localidad)
-                                            @if($localidad->id == $recinto->localidad_id)
-                                                <option selected value="{{$localidad->id}}">{{$localidad->nombre}} - {{$localidad->provincia->nombre}} - {{$localidad->provincia->departamento->nombre}}</option>
+                                    <label>Municipio</label>
+                                    <select class="form-control selectpicker" data-style="btn btn-link"  name="municipio_id">
+                                        @foreach($municipios as $municipio)
+                                            @if($municipio->id == $recinto->municipio_id)
+                                                <option selected value="{{$municipio->id}}">{{$municipio->nombre}} - {{$municipio->provincia->nombre}} - {{$municipio->provincia->departamento->nombre}}</option>
                                             @else
-                                                <option value="{{$localidad->id}}">{{$localidad->nombre}} - {{$localidad->provincia->nombre}} - {{$localidad->provincia->departamento->nombre}}</option>
+                                                <option value="{{$municipio->id}}">{{$municipio->nombre}} - {{$municipio->provincia->nombre}} - {{$municipio->provincia->departamento->nombre}}</option>
                                             @endif
                                         @endforeach
                                     </select>

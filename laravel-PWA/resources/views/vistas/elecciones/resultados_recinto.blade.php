@@ -6,7 +6,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="pb-2">"{{$eleccion->nombre}}" - {{$departamento->nombre}} - {{$provincia->nombre}} - {{$localidad->nombre}} - {{$recinto->nombre}}</h3>
+                        <h3 class="pb-2">"{{$eleccion->nombre}}" - {{$departamento->nombre}} - {{$provincia->nombre}} - {{$municipio->nombre}} - {{$recinto->nombre}}</h3>
                         <div class="row">
 
                             <div class="col-lg-6">
@@ -74,7 +74,7 @@
                                                 <td class="text-center">{{$mesa->id}}</td>
                                                 <td class="text-center">{{$mesa->nombre}}</td>
                                                 <td class="text-center ">
-                                                    <a href="{{url("admin/elecciones/resultados/$eleccion->id/$departamento->id/$provincia->id/$localidad->id/$recinto->id/$mesa->id")}}">
+                                                    <a href="{{url("admin/elecciones/resultados/$eleccion->id/$departamento->id/$provincia->id/$municipio->id/$recinto->id/$mesa->id")}}">
                                                         <button class="btn btn-info">
                                                             Ver resultados
                                                         </button>
@@ -89,9 +89,9 @@
                             </div>
                         </div>
                         <br>
-                        <a href="{{url("admin/elecciones/resultados/$eleccion->id/$departamento->id/$provincia->id/$localidad->id")}}">
+                        <a href="{{url("admin/elecciones/resultados/$eleccion->id/$departamento->id/$provincia->id/$municipio->id")}}">
                             <button class="btn btn-info btn-sm">
-                                {{$localidad->nombre}}
+                                {{$municipio->nombre}}
                             </button>
                         </a>
                         <a href="{{url("admin/elecciones/resultados/$eleccion->id/$departamento->id/$provincia->id")}}">

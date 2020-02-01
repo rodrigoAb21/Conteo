@@ -23,7 +23,7 @@
                                 <th><b>ID</b></th>
                                 <th><b>NOMBRE</b></th>
                                 <th><b>DIRECCION</b></th>
-                                <th><b>LOCALIDAD</b></th>
+                                <th><b>MUNICIPIO</b></th>
                                 <th><b>PROVINCIA</b></th>
                                 <th class="text-right "><b>OPCIONES</b></th>
                             </tr>
@@ -34,8 +34,8 @@
                                     <td>{{$recinto->id}}</td>
                                     <td>{{$recinto->nombre}}</td>
                                     <td>{{$recinto->direccion}}</td>
-                                    <td>{{$recinto->localidad->nombre}}</td>
-                                    <td>{{$recinto->localidad->provincia->nombre}}</td>
+                                    <td>{{$recinto->municipio->nombre}}</td>
+                                    <td>{{$recinto->municipio->provincia->nombre}}</td>
                                     <td class="text-right ">
                                         <a href="{{url('admin/recintos/'.$recinto->id.'/edit')}}">
                                             <button class="btn btn-warning btn-sm">

@@ -6,11 +6,12 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="pb-2">
-                        Nuevo participante
+                        Editar Participante: {{$partido->id}}
                     </h3>
 
-                    <form method="POST" action="{{url('admin/participantes')}}" autocomplete="off">
+                    <form method="POST" action="{{url('admin/partidos/'.$partido->id)}}" autocomplete="off">
                         {{csrf_field()}}
+                        {{method_field('PATCH')}}
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
@@ -18,7 +19,7 @@
                                     <input required
                                            type="text"
                                            class="form-control"
-                                           value="{{old('nombre')}}"
+                                           value="{{$partido->nombre}}"
                                            name="nombre">
                                 </div>
                             </div>
@@ -29,20 +30,22 @@
                                     <input required
                                            type="text"
                                            class="form-control"
-                                           value="{{old('sigla')}}"
+                                           value="{{$partido->sigla}}"
                                            name="sigla">
                                 </div>
                             </div>
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label>Color</label>
+                                    <label>Estado</label>
                                     <input required
+                                           type="color"
                                            class="form-control"
-                                           name="color"
-                                           type="color">
+                                           value="{{$partido->color}}"
+                                           name="color">
                                 </div>
                             </div>
+
                         </div>
                         <button type="submit" class="btn btn-info btn-sm">Guardar</button>
                     </form>

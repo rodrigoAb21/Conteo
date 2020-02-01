@@ -42,10 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/elecciones/asignaciones/{id}', 'Web\EleccionController@verAsignacion');
     Route::post('admin/elecciones/asignaciones/{id}', 'Web\EleccionController@asignar');
 
-    Route::resource('admin/partidos', 'Web\ParticipanteController');
+    Route::resource('admin/partidos', 'Web\PartidoController');
     Route::resource('admin/departamentos', 'Web\DepartamentoController');
     Route::resource('admin/provincias', 'Web\ProvinciaController');
-    Route::resource('admin/municipios', 'Web\LocalidadController');
+    Route::resource('admin/municipios', 'Web\MunicipioController');
     Route::resource('admin/recintos', 'Web\RecintoController');
     Route::resource('admin/mesas', 'Web\MesaController');
 });

@@ -21,7 +21,6 @@
                             <tr>
                                 <th><b>ID</b></th>
                                 <th><b>NOMBRE</b></th>
-                                <th><b>PAIS</b></th>
                                 <th class="text-right "><b>OPCIONES</b></th>
                             </tr>
                             </thead>
@@ -30,7 +29,6 @@
                                 <tr>
                                     <td>{{$departamento->id}}</td>
                                     <td>{{$departamento->nombre}}</td>
-                                    <td>{{$departamento->pais->nombre}}</td>
                                     <td class="text-right ">
                                         <a href="{{url('admin/departamentos/'.$departamento->id.'/edit')}}">
                                             <button class="btn btn-warning btn-sm">

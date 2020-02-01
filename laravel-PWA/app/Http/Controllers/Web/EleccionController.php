@@ -170,13 +170,13 @@ class EleccionController extends Controller
         $eleccion = Eleccion::findOrFail($eleccion_id);
         $resultados = DB::select(
             'SELECT SUM(resultado.total) as total, partido.color, partido.sigla
-             FROM resultado,partido_eleccion, partido, mesa, recinto, localidad, provincia
+             FROM resultado,partido_eleccion, partido, mesa, recinto, municipio, provincia
              WHERE partido_eleccion.partido_id = partido.id
              AND resultado.partido_eleccion_id = partido_eleccion.id
              AND resultado.mesa_id = mesa.id
              AND mesa.recinto_id = recinto.id
-             AND recinto.localidad_id = localidad.id
-             AND localidad.provincia_id = provincia.id
+             AND recinto.municipio_id = municipio.id
+             AND municipio.provincia_id = provincia.id
              AND provincia.departamento_id = ?
              AND partido_eleccion.eleccion_id = ?
              GROUP BY partido.sigla, partido.color
@@ -197,13 +197,13 @@ class EleccionController extends Controller
 
         $resultados = DB::select(
             'SELECT SUM(resultado.total) as total, partido.color, partido.sigla
-             FROM resultado,partido_eleccion, partido, mesa, recinto, localidad
+             FROM resultado,partido_eleccion, partido, mesa, recinto, municipio
              WHERE partido_eleccion.partido_id = partido.id
              AND resultado.partido_eleccion_id = partido_eleccion.id
              AND resultado.mesa_id = mesa.id
              AND mesa.recinto_id = recinto.id
-             AND recinto.localidad_id = localidad.id
-             AND localidad.provincia_id = ?
+             AND recinto.municipio_id = municipio.id
+             AND municipio.provincia_id = ?
              AND partido_eleccion.eleccion_id = ?
              GROUP BY partido.sigla, partido.color
              ORDER BY total DESC', [$prov_id, $eleccion_id])
@@ -217,11 +217,11 @@ class EleccionController extends Controller
                 'eleccion' => Eleccion::findOrFail($eleccion_id),
                 'departamento' => Departamento::findOrFail($dpto_id),
                 'provincia' => Provincia::findOrFail($prov_id),
-                'localidades' => Municipio::where('provincia_id', '=', $prov_id)->paginate(10),
+                'municipios' => Municipio::where('provincia_id', '=', $prov_id)->paginate(10),
             ]);
     }
 
-    public function resultados_localidad($eleccion_id, $dpto_id, $prov_id, $local_id){
+    public function resultados_municipio($eleccion_id, $dpto_id, $prov_id, $mun_id){
 
         $resultados = DB::select(
             'SELECT SUM(resultado.total) as total, partido.color, partido.sigla
@@ -230,25 +230,25 @@ class EleccionController extends Controller
              AND resultado.partido_eleccion_id = partido_eleccion.id
              AND resultado.mesa_id = mesa.id
              AND mesa.recinto_id = recinto.id
-             AND recinto.localidad_id = ?
+             AND recinto.municipio_id = ?
              AND partido_eleccion.eleccion_id = ?
              GROUP BY partido.sigla, partido.color
-             ORDER BY total DESC', [$local_id, $eleccion_id])
+             ORDER BY total DESC', [$mun_id, $eleccion_id])
         ;
 
 
-        return view('vistas.elecciones.resultados_localidad',
+        return view('vistas.elecciones.resultados_municipio',
             [
                 'resultados' => $resultados,
                 'eleccion' => Eleccion::findOrFail($eleccion_id),
                 'departamento' => Departamento::findOrFail($dpto_id),
                 'provincia' => Provincia::findOrFail($prov_id),
-                'localidad' => Municipio::findOrFail($local_id),
-                'recintos' => Recinto::where('localidad_id', '=', $local_id)->paginate(10),
+                'municipio' => Municipio::findOrFail($mun_id),
+                'recintos' => Recinto::where('municipio_id', '=', $mun_id)->paginate(10),
             ]);
     }
 
-    public function resultados_recinto($eleccion_id, $dpto_id, $prov_id, $local_id, $rec_id){
+    public function resultados_recinto($eleccion_id, $dpto_id, $prov_id, $mun_id, $rec_id){
 
         $resultados = DB::select(
             'SELECT SUM(resultado.total) as total, partido.color, partido.sigla
@@ -269,13 +269,13 @@ class EleccionController extends Controller
                 'eleccion' => Eleccion::findOrFail($eleccion_id),
                 'departamento' => Departamento::findOrFail($dpto_id),
                 'provincia' => Provincia::findOrFail($prov_id),
-                'localidad' => Municipio::findOrFail($local_id),
+                'municipio' => Municipio::findOrFail($mun_id),
                 'recinto' => Recinto::findOrFail($rec_id),
                 'mesas' => Mesa::where('recinto_id', '=', $rec_id)->paginate(10),
             ]);
     }
 
-    public function resultados_mesa($eleccion_id, $dpto_id, $prov_id, $local_id, $rec_id, $mesa_id){
+    public function resultados_mesa($eleccion_id, $dpto_id, $prov_id, $mun_id, $rec_id, $mesa_id){
 
         $resultados = DB::select(
             'SELECT SUM(resultado.total) as total, partido.color, partido.sigla
@@ -295,7 +295,7 @@ class EleccionController extends Controller
                 'eleccion' => Eleccion::findOrFail($eleccion_id),
                 'departamento' => Departamento::findOrFail($dpto_id),
                 'provincia' => Provincia::findOrFail($prov_id),
-                'localidad' => Municipio::findOrFail($local_id),
+                'municipio' => Municipio::findOrFail($mun_id),
                 'recinto' => Recinto::findOrFail($rec_id),
                 'mesa' => Mesa::findOrFail($mesa_id),
             ]);
