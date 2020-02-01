@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="pb-2">"{{$eleccion->nombre}}" - {{$departamento->nombre}} - {{$provincia->nombre}}
-                            - {{$localidad->nombre}} - {{$recinto->nombre}} - Mesa: {{$mesa->nombre}}</h3>
+                            - {{$municipio->nombre}} - {{$recinto->nombre}} - Mesa: {{$mesa->nombre}}</h3>
                         <div class="row">
 
                             <div class="col-lg-6">
@@ -35,12 +35,12 @@
                         </div>
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-hover table-bordered color-table primary-table">
+                            <table class="table table-hover table-striped">
                                 <thead>
                                 <tr>
-                                    <th class="text-center">POSICION</th>
                                     <th class="text-center">SIGLA</th>
                                     <th class="text-center">COLOR</th>
+                                    <th class="text-center">PORCENTAJE</th>
                                     <th class="text-center">TOTAL</th>
                                 </tr>
                                 </thead>
@@ -48,9 +48,9 @@
                                 @foreach($resultados as $resultado)
                                     <tr>
 
-                                        <td class="text-center">{{$loop->iteration}}</td>
                                         <td class="text-center">{{$resultado->sigla}}</td>
                                         <td style="background: {{$resultado->color}};"></td>
+                                        <td class="text-center">{{round(($resultado->total*100)/$total,2)}} %</td>
                                         <td class="text-center">{{$resultado->total}}</td>
                                     </tr>
                                 @endforeach
@@ -58,14 +58,14 @@
                             </table>
                         </div>
                         <br>
-                        <a href="{{url("/resultados/$eleccion->id/$departamento->id/$provincia->id/$localidad->id/$recinto->id")}}">
+                        <a href="{{url("/resultados/$eleccion->id/$departamento->id/$provincia->id/$municipio->id/$recinto->id")}}">
                             <button class="btn btn-primary">
                                  {{$recinto->nombre}}
                             </button>
                         </a>
-                        <a href="{{url("/resultados/$eleccion->id/$departamento->id/$provincia->id/$localidad->id")}}">
+                        <a href="{{url("/resultados/$eleccion->id/$departamento->id/$provincia->id/$municipio->id")}}">
                             <button class="btn btn-primary">
-                                 {{$localidad->nombre}}
+                                 {{$municipio->nombre}}
                             </button>
                         </a>
                         <a href="{{url("/resultados/$eleccion->id/$departamento->id/$provincia->id")}}">

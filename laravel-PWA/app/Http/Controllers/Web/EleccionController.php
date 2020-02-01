@@ -157,10 +157,17 @@ class EleccionController extends Controller
              ORDER BY total DESC', [$eleccion_id])
         ;
 
+        $total = 0;
+
+        foreach ($resultados as $resultado){
+            $total = $total + $resultado->total;
+        }
+
 
         return view('vistas.elecciones.resultados',
             [
                 'resultados' => $resultados,
+                'total' => $total,
                 'eleccion' => Eleccion::findOrFail($eleccion_id),
                 'departamentos' => Departamento::paginate(10),
             ]);
@@ -182,11 +189,17 @@ class EleccionController extends Controller
              GROUP BY partido.sigla, partido.color
              ORDER BY total DESC', [$dpto_id, $eleccion_id])
         ;
+        $total = 0;
+
+        foreach ($resultados as $resultado){
+            $total = $total + $resultado->total;
+        }
 
 
         return view('vistas.elecciones.resultados_departamento',
             [
                 'resultados' => $resultados,
+                'total' => $total,
                 'eleccion' => Eleccion::findOrFail($eleccion_id),
                 'departamento' => Departamento::findOrFail($dpto_id),
                 'provincias' => Provincia::where('departamento_id', '=', $dpto_id)->paginate(10),
@@ -209,11 +222,17 @@ class EleccionController extends Controller
              ORDER BY total DESC', [$prov_id, $eleccion_id])
         ;
 
+        $total = 0;
+
+        foreach ($resultados as $resultado){
+            $total = $total + $resultado->total;
+        }
 
 
         return view('vistas.elecciones.resultados_provincia',
             [
                 'resultados' => $resultados,
+                'total' => $total,
                 'eleccion' => Eleccion::findOrFail($eleccion_id),
                 'departamento' => Departamento::findOrFail($dpto_id),
                 'provincia' => Provincia::findOrFail($prov_id),
@@ -235,11 +254,17 @@ class EleccionController extends Controller
              GROUP BY partido.sigla, partido.color
              ORDER BY total DESC', [$mun_id, $eleccion_id])
         ;
+        $total = 0;
+
+        foreach ($resultados as $resultado){
+            $total = $total + $resultado->total;
+        }
 
 
         return view('vistas.elecciones.resultados_municipio',
             [
                 'resultados' => $resultados,
+                'total' => $total,
                 'eleccion' => Eleccion::findOrFail($eleccion_id),
                 'departamento' => Departamento::findOrFail($dpto_id),
                 'provincia' => Provincia::findOrFail($prov_id),
@@ -262,10 +287,16 @@ class EleccionController extends Controller
              ORDER BY total DESC', [$rec_id, $eleccion_id])
         ;
 
+        $total = 0;
+
+        foreach ($resultados as $resultado){
+            $total = $total + $resultado->total;
+        }
 
         return view('vistas.elecciones.resultados_recinto',
             [
                 'resultados' => $resultados,
+                'total' => $total,
                 'eleccion' => Eleccion::findOrFail($eleccion_id),
                 'departamento' => Departamento::findOrFail($dpto_id),
                 'provincia' => Provincia::findOrFail($prov_id),
@@ -287,11 +318,17 @@ class EleccionController extends Controller
              GROUP BY partido.sigla, partido.color
              ORDER BY total DESC', [$mesa_id, $eleccion_id])
         ;
+        $total = 0;
+
+        foreach ($resultados as $resultado){
+            $total = $total + $resultado->total;
+        }
 
 
         return view('vistas.elecciones.resultados_mesa',
             [
                 'resultados' => $resultados,
+                'total' => $total,
                 'eleccion' => Eleccion::findOrFail($eleccion_id),
                 'departamento' => Departamento::findOrFail($dpto_id),
                 'provincia' => Provincia::findOrFail($prov_id),

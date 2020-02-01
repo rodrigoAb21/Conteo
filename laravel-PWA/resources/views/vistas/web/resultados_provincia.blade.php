@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row pt-3">
+        <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
@@ -34,12 +34,12 @@
                         </div>
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-hover table-bordered color-table primary-table">
+                            <table class="table table-hover table-striped">
                                 <thead>
                                 <tr>
-                                    <th class="text-center">POSICION</th>
                                     <th class="text-center">SIGLA</th>
                                     <th class="text-center">COLOR</th>
+                                    <th class="text-center">PORCENTAJE</th>
                                     <th class="text-center">TOTAL</th>
                                 </tr>
                                 </thead>
@@ -47,9 +47,9 @@
                                 @foreach($resultados as $resultado)
                                     <tr>
 
-                                        <td class="text-center">{{$loop->iteration}}</td>
                                         <td class="text-center">{{$resultado->sigla}}</td>
                                         <td style="background: {{$resultado->color}};"></td>
+                                        <td class="text-center">{{round(($resultado->total*100)/$total,2)}} %</td>
                                         <td class="text-center">{{$resultado->total}}</td>
                                     </tr>
                                 @endforeach
@@ -58,24 +58,24 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="pb-2">Localidades</h3>
+                                <h3 class="pb-2">Municipios</h3>
                                 <div class="table-responsive">
-                                    <table class="table table-hover table-bordered color-table primary-table">
+                                    <table class="table table-hover table-striped">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">ID</th>
+
                                             <th class="text-center">NOMBRE</th>
-                                            <th class="text-center">OPCIONES</th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($municipios as $municipio)
                                             <tr>
-                                                <td class="text-center">{{$municipio->id}}</td>
+
                                                 <td class="text-center">{{$municipio->nombre}}</td>
                                                 <td class="text-center ">
                                                     <a href="{{url("resultados/$eleccion->id/$departamento->id/$provincia->id/$municipio->id")}}">
-                                                        <button class="btn btn-primary">
+                                                        <button class="btn btn-warning">
                                                             Ver resultados
                                                         </button>
                                                     </a>
