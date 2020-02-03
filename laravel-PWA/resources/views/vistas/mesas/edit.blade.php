@@ -40,11 +40,11 @@
                                         @foreach($recintos as $recinto)
                                             @if($recinto->id == $mesa->recinto_id)
                                                 <option selected value="{{$recinto->id}}">
-                                                    {{$recinto->nombre}} - {{$recinto->localidad->nombre}} - {{$recinto->localidad->provincia->nombre}} - {{$recinto->localidad->provincia->departamento->nombre}}
+                                                    {{$recinto->nombre}} - {{$recinto->municipio->nombre}} - {{$recinto->municipio->provincia->nombre}} - {{$recinto->municipio->provincia->departamento->nombre}}
                                                 </option>
                                             @else
                                                 <option value="{{$recinto->id}}">
-                                                    {{$recinto->nombre}} - {{$recinto->localidad->nombre}} - {{$recinto->localidad->provincia->nombre}} - {{$recinto->localidad->provincia->departamento->nombre}}
+                                                    {{$recinto->nombre}} - {{$recinto->municipio->nombre}} - {{$recinto->municipio->provincia->nombre}} - {{$recinto->municipio->provincia->departamento->nombre}}
                                                 </option>
                                             @endif
                                         @endforeach

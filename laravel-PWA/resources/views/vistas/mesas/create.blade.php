@@ -38,7 +38,7 @@
                                     <select class="form-control selectpicker" data-style="btn btn-link"  name="recinto_id">
                                         @foreach($recintos as $recinto)
                                             <option value="{{$recinto->id}}">
-                                                {{$recinto->nombre}} - {{$recinto->localidad->nombre}} - {{$recinto->localidad->provincia->nombre}} - {{$recinto->localidad->provincia->departamento->nombre}}
+                                                {{$recinto->nombre}} - {{$recinto->municipio->nombre}} - {{$recinto->municipio->provincia->nombre}} - {{$recinto->municipio->provincia->departamento->nombre}}
                                             </option>
                                         @endforeach
                                     </select>

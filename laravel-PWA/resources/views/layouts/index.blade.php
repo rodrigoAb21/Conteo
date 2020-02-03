@@ -45,31 +45,31 @@
                 </li>
                 <li class="{{ Request::is('admin/departamentos*') ? 'nav-item active' : 'nav-item' }}">
                     <a class="nav-link" href="{{url('admin/departamentos')}}" >
-                        <i class="fa fa-flag"></i>
+                        <i class="fa fa-globe-americas"></i>
                         <p> Departamentos</p>
                     </a>
                 </li>
                 <li class="{{ Request::is('admin/provincias*') ? 'nav-item active' : 'nav-item' }}">
                     <a class="nav-link" href="{{url('admin/provincias')}}" >
-                        <i class="fa fa-route"></i>
+                        <i class="fa fa-map-marker"></i>
                         <p> Provincias</p>
                     </a>
                 </li>
                 <li class="{{ Request::is('admin/municipios*') ? 'nav-item active' : 'nav-item' }}">
                     <a class="nav-link" href="{{url('admin/municipios')}}" >
-                        <i class="fa fa-map-signs"></i>
+                        <i class="fa fa-map-pin"></i>
                         <p> Municipios</p>
                     </a>
                 </li>
                 <li class="{{ Request::is('admin/recintos*') ? 'nav-item active' : 'nav-item' }}">
                     <a class="nav-link" href="{{url('admin/recintos')}}" >
-                        <i class="fa fa-school"></i>
+                        <i class="fa fa-hotel"></i>
                         <p> Recintos</p>
                     </a>
                 </li>
                 <li class="{{ Request::is('admin/mesas*') ? 'nav-item active' : 'nav-item' }}">
                     <a class="nav-link" href="{{url('admin/mesas')}}" >
-                        <i class="fa fa-archive"></i>
+                        <i class="fa fa-table"></i>
                         <p > Mesas</p>
                     </a>
                 </li>

@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header card-header-warning card-header-icon">
                     <div class="card-icon">
-                        <i class="fa fa-map-signs fa-2x"></i>
+                        <i class="fa fa-map-pin fa-2x"></i>
                     </div>
                     <h3 class="card-title">Municipios
                         <div class="float-right">

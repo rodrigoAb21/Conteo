@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header card-header-warning card-header-icon">
                     <div class="card-icon">
-                        <i class="fa fa-flag fa-2x"></i>
+                        <i class="fa fa-globe-americas fa-2x"></i>
                     </div>
                     <h3 class="card-title">Departamentos
                         <div class="float-right">

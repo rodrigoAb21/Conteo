@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header card-header-warning card-header-icon">
                     <div class="card-icon">
-                        <i class="fa fa-school fa-2x"></i>
+                        <i class="fa fa-hotel fa-2x"></i>
                     </div>
                     <h3 class="card-title">Recintos
                         <div class="float-right">

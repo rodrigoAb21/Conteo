@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header card-header-warning card-header-icon">
                     <div class="card-icon">
-                        <i class="fa fa-archive fa-2x"></i>
+                        <i class="fa fa-table fa-2x"></i>
                     </div>
                     <h3 class="card-title">Mesas
                         <div class="float-right">
@@ -24,7 +24,7 @@
                                 <th><b>NOMBRE</b></th>
                                 <th><b>INSCRTIOS</b></th>
                                 <th><b>RECINTO</b></th>
-                                <th><b>LOCALIDAD</b></th>
+                                <th><b>MUNICIPIO</b></th>
                                 <th><b>PROVINCIA</b></th>
                                 <th class="text-right "><b>OPCIONES</b></th>
                             </tr>
@@ -36,8 +36,8 @@
                                     <td>{{$mesa->nombre}}</td>
                                     <td>{{$mesa->inscritos}}</td>
                                     <td>{{$mesa->recinto->nombre}}</td>
-                                    <td>{{$mesa->recinto->localidad->nombre}}</td>
-                                    <td>{{$mesa->recinto->localidad->provincia->nombre}}</td>
+                                    <td>{{$mesa->recinto->municipio->nombre}}</td>
+                                    <td>{{$mesa->recinto->municipio->provincia->nombre}}</td>
                                     <td class="text-right ">
                                         <a href="{{url('admin/mesas/'.$mesa->id.'/edit')}}">
                                             <button class="btn btn-warning btn-sm">
