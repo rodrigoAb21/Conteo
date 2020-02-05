@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text("ELECCIONES"),
           centerTitle: true,
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.orangeAccent,
         ),
         body: new Stack(
           children: _buildHome(context),
