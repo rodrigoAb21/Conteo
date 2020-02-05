@@ -21,12 +21,35 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          RaisedButton(
-            onPressed: () => _submit(context),
-            child: Text("EMPEZAR"),
-            color: Colors.blue,
-            textColor: Colors.white,
+          new Hero(
+            tag: 'hero',
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+              child: CircleAvatar(
+                backgroundColor: Colors.transparent,
+                radius: 135.0,
+                child: Image.asset('assets/logo.png'),
+              ),
+            ),
           ),
+          new Padding(
+              padding: EdgeInsets.fromLTRB(0.0, 125.0, 0.0, 20.0),
+              child: SizedBox(
+                height: 50.0,
+                width: 250.0,
+                child: new RaisedButton(
+                  elevation: 5.0,
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(15.0)),
+                  color: Colors.orange,
+                  child: new Text('INICIAR',
+                      style:
+                          new TextStyle(fontSize: 16.0, color: Colors.white)),
+                  onPressed: () {
+                    _submit(context);
+                  },
+                ),
+              ))
         ],
       ),
     );
@@ -60,7 +83,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Principal"),
+          title: Text("ELECCIONES"),
+          centerTitle: true,
+          backgroundColor: Colors.orange,
         ),
         body: new Stack(
           children: _buildHome(context),
@@ -68,7 +93,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _submit(BuildContext context) async {
-    
     setState(() {
       _bandera = true;
     });

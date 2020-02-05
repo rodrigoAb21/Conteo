@@ -20,10 +20,10 @@
 <div class="wrapper ">
     <div class="sidebar" data-color="orange" data-background-color="black" data-image="{{asset('material/img/sidebar-1.jpg')}}">
         <div class="logo">
-            <a href="" class="simple-text logo-mini">
+            <a href="{{url('/admin')}}" class="simple-text logo-mini">
             </a>
             <a href="{{url('/admin')}}" class="simple-text logo-normal">
-                <img style="height: 65px; width: 120px" src="{{asset('material/img/inegas-logo.png')}}"/>
+                <img style="height: 65px; width: 120px" src="{{asset('material/img/logo.png')}}"/>
             </a>
         </div>
         <div class="sidebar-wrapper">
